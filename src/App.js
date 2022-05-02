@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar"
+import './App.css'
+import Home from './components/pages/Home'
+import Fest from "./components/pages/Fest";
+import Calendar from "./components/pages/Calendar";
+import Contact from "./components/pages/Contact";
+import SignUp from "./components/pages/SignUp";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+    <Navbar />
+      <Routes>
+          <Route path="/" element={<Home />} exact={true} />
+          <Route path="/fest" element={<Fest />} exact={true} />
+          <Route path="/calendar" element={<Calendar />} exact={true} />
+          <Route path="/contact" element={<Contact />} exact={true} />
+          <Route path="/contact" element={<SignUp />} exact={true} />
+      </Routes>
+    </Router>
   );
 }
 
-export default App;

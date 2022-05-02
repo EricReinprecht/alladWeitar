@@ -1,0 +1,38 @@
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+    border: black 1px solid;
+
+    margin-top: 2%;
+    text-decoration: none;
+    padding: 1%;
+
+    height: 80px;
+    width: 80vw;
+
+    cursor: pointer;
+
+    background-color: transparent;
+}
+
+.content:hover{
+    background-color: rgb(0, 0, 0);
+}
+
+.content:hover .info{
+    color: white;
+}
+
+.info {
+    text-decoration: none;
+    color:black;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.content-link{
+    text-decoration: none;
+}
