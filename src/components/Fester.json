@@ -1,6 +1,5 @@
 [
-    {   "id": 1,
-        "name": "HAK Bregenz Ball",
+    {   "name": "HAK Bregenz Ball",
         "fest": [
             {
                 "date": "18.3.2022",
@@ -11,8 +10,7 @@
             }
         ]
     },
-    {   "id": 2,
-        "name": "Vorarlberg Goes Viral",
+    {   "name": "Vorarlberg Goes Viral",
         "fest": [
             {
                 "date": "1.4.2022",
@@ -23,8 +21,7 @@
             }
         ]
     },
-    {   "id": 3,
-        "name": "HTL Bregenz Ball",
+    {   "name": "HTL Bregenz Ball",
         "fest": [
             {
                 "date": "9.4.2022",
@@ -35,8 +32,7 @@
             }
         ]
     },
-    {   "id": 4,
-        "name": "HTL Vorarlberg Fest",
+    {   "name": "HTL Vorarlberg Fest",
         "fest": [
             {
                 "date": "14.5.2022",
@@ -47,8 +43,7 @@
             }
         ]
     },
-    {   "id": 5,
-        "name": "Musikfest Lingenau",
+    {   "name": "Musikfest Lingenau",
         "fest": [
             {
                 "date": "7.7.2022",
@@ -80,8 +75,7 @@
             }
         ]
     },
-    {   "id": 6,
-        "name": "Szene Openair",
+    {   "name": "Szene Openair",
         "fest": [
             {
                 "date": "4.8.2022",
@@ -106,4 +100,4 @@
             }
         ]
     }  
-]
+] 
