@@ -1,18 +1,24 @@
 import React from 'react'
 import '../../App.css'
 import'./Fest.css'
-import { Link } from 'react-router-dom'
+import { useParams, useNavigate } from "react-router-dom";
 import FestMainInfos from '../FestMainInfos'
 import FestOtherInfos from '../FestOtherInfos'
 import { useState, useEffect } from 'react';
 
 import Fester from '../Fester.json'
 
-export default function Fest() {
+export default function Fest(props) {
+  let { festname } = useParams();
+
+  
+ 
+
   return (
       <>
-        <FestMainInfos/>
-        <FestOtherInfos />
+      <div className='test'>
+        { festname }
+      </div>
       </>
     
     )
