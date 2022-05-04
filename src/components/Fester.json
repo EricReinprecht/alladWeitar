@@ -1,5 +1,6 @@
 [
-    {   "name": "HAK Bregenz Ball",
+    {   "id" : "1",
+        "name": "HAK Bregenz Ball",
         "fest": [
             {
                 "date": "18.3.2022",
