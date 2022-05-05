@@ -19,18 +19,33 @@
 
 .header{
     position: relative;
-    top: 150px;
+    top: 130px;
     left: 10%;
+
+    font-size: 21px;
 }
 
 .infos{
-
+    position: relative;
+    top: 150px;
+    left: 10%;
+    padding: 5px;
 }
 
 .infos-main{
-
+    background-color: greenyellow;
+    width: 80%;
 }
 
-.infos-other{
+.info{
+    padding-top: 7px;
+}
 
+
+
+.infos-other{
+    height: 80px;
+    background-color: aqua;
+    margin-top: 20px;
+    width: 80%;
 }
