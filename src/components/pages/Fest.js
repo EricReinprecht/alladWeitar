@@ -16,10 +16,22 @@ export default function Fest(props) {
 
   return (
       <>
-      <div className='fest-main'></div>
-      <div className='header'>
-        { festname }
+      <div className='fest-main'>
+        <div className='fest-display'>
+        <div className='header'>
+          { festname }
+        </div>
+          <div className='infos'>
+            <div className='infos-main'>
+              <FestMainInfos />
+            </div>
+            <div className='infos-other'>
+              <FestOtherInfos/>
+            </div>
+          </div>
+        </div>
       </div>
+      
       </>
     
     )

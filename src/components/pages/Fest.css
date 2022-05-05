@@ -1,9 +1,36 @@
-.header{
-    position: absolute;
-    top: 200px;
-    left: 200px;
-}
-
 .fest-main{
     position: absolute;
+    bottom: 0px;
+
+    height: 100%;
+    width: 100%;
+
+    background-color: blue;
+}
+
+.fest-display{
+    background-color: red;
+    height: 100%;
+    width: 60%;
+
+    position: relative;
+    left: 20%
+}
+
+.header{
+    position: relative;
+    top: 150px;
+    left: 10%;
+}
+
+.infos{
+
+}
+
+.infos-main{
+
+}
+
+.infos-other{
+
 }
