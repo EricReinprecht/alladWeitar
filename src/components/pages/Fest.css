@@ -1,5 +1,9 @@
-.test{
+.header{
     position: absolute;
     top: 200px;
     left: 200px;
+}
+
+.fest-main{
+    position: absolute;
 }
