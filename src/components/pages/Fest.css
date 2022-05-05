@@ -4,17 +4,13 @@
 
     height: 100%;
     width: 100%;
-
-    background-color: blue;
 }
 
 .fest-display{
-    background-color: red;
     height: 100%;
-    width: 60%;
+    width: 100%;
 
     position: relative;
-    left: 20%
 }
 
 .header{
@@ -29,11 +25,10 @@
     position: relative;
     top: 150px;
     left: 10%;
-    padding: 5px;
+    padding-left: 20px;
 }
 
 .infos-main{
-    background-color: greenyellow;
     width: 80%;
 }
 
@@ -41,11 +36,8 @@
     padding-top: 7px;
 }
 
-
-
 .infos-other{
     height: 80px;
-    background-color: aqua;
     margin-top: 20px;
     width: 80%;
 }
