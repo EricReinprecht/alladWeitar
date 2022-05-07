@@ -7,7 +7,9 @@
                 "location": "HAK Bregenz",
                 "startTime": "19:30",
                 "entryCard": "Ja",
-                "otherInfos": []
+                "otherInfos": [
+                    "Bus hallo",
+                    "hallp"]
             }
         ]
     },
