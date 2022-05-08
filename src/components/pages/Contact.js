@@ -1,6 +1,5 @@
 import React from 'react'
 import '../../App.css'
-import'./Fest.css'
 import './Contact.css'
 
 import { useState, useEffect } from 'react';
