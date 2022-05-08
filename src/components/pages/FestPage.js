@@ -27,6 +27,7 @@ export default function FestPage() {
     getFest(),
     <>
     <div className="festpage-main">
+      
       <div className="header">{festname}</div>
       <div className="fester">
         {fester}

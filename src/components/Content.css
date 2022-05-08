@@ -4,7 +4,7 @@
     align-items: center;
     flex-direction: row;
 
-    border: black 1px solid;
+    border: #242222 1px solid;
 
     margin-top: 2%;
     text-decoration: none;
@@ -19,7 +19,7 @@
 }
 
 .content:hover{
-    background-color: rgb(0, 0, 0);
+    background-color: #242222;
 }
 
 .content:hover .info{
@@ -28,9 +28,10 @@
 
 .info {
     text-decoration: none;
-    color:black;
+    color:#242222;
     font-size: 20px;
     font-weight: 400;
+    transition: 250ms;
 }
 
 .content-link{
