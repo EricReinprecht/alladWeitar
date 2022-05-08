@@ -48,6 +48,11 @@
     justify-content: end;
     margin-right: 2rem;
   }
+
+  .nav-items{
+    position: absolute;
+    right: 8%;
+  }
   
   .nav-item {
     height: 80px;
@@ -107,6 +112,24 @@
       transition: all 0.5s ease;
       z-index: 1;
     }
+
+    .nav-items{
+      position: static;
+    }
+
+    /*.nav-item{
+      position: absolute;
+      width: 100vw;
+    }
+
+    #calendar-button{
+      bottom: 100px;
+    }
+
+    #home-button{
+      position: absolute;
+      bottom: 200px;
+    }*/
   
     .nav-links {
       text-align: center;
