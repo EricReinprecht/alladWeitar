@@ -2,18 +2,18 @@ import React from "react";
 import "../../App.css";
 import "./FestPage.css";
 import Fest from "../Fest.js"
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 import Fester from "../Fester.json";
 
-export default function FestPage(props) {
+export default function FestPage() {
+
   let { festname } = useParams();
 
   let data = Fester.filter((fest) => fest.name === festname);
 
-  let fester = []; //Falls mehr als 1 Fest, div wird ausgegeben Fest wird erstellt über Fest.js, Fester werden als Fest component in Array gspeichert
-
+  let fester = [];
 
   let getFest = () => {
     let i = 0;
@@ -22,10 +22,6 @@ export default function FestPage(props) {
       i++;
     }
   }
-
-  
-  
-
 
   return (
     getFest(),

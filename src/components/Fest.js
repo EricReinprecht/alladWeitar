@@ -1,9 +1,5 @@
 import React from "react";
 import "../App.css";
-
-
-
-import Fester from "./Fester.json";
 import OtherInfo from "./OtherInfo";
 
 export default function Fest(props) {
@@ -17,7 +13,6 @@ export default function Fest(props) {
             i++;
         }
       }
-
 
   return (
     getOtherInfos(),

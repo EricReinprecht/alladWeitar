@@ -5,17 +5,16 @@ import './Calendar.css';
 import './CalendarPage.css';
 import 'react-calendar/dist/Calendar.css';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function CalendarPage() {
+  
     const [date, setDate] = useState(new Date());
 
     const onChange = date => {
       setDate(date);
     }
 
-
-  
     return (
       <div className='calendar-container'>
         <Calendar

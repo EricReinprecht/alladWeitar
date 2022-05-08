@@ -1,4 +1,3 @@
-import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar"
 import './App.css'
@@ -7,12 +6,9 @@ import FestPage from "./components/pages/FestPage";
 import CalendarPage from "./components/pages/CalendarPage";
 import Contact from "./components/pages/Contact";
 import SignUp from "./components/pages/SignUp";
-import React, { useState, useEffect } from 'react';
-import Login from "./components/Login";
 import ErrorPage from "./components/pages/ErrorPage";
 
 export default function App() {
-
 
   return (
     <Router>

@@ -1,7 +1,7 @@
 import React from 'react'
 import './Login.css'
 
-function Login() {
+export default function Login() {
   return (
       <>
         <div className='login-main'>
@@ -20,11 +20,7 @@ function Login() {
             </form>
         </div>
       </>
-      
-    
   )
 }
-
-export default Login
 
 

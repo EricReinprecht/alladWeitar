@@ -3,7 +3,7 @@ import Content from './Content'
 import Fester from './Fester.json'
 import './ContentList.css'
 
-function ContentList() {
+export default function ContentList() {
 
     let content = [];
 
@@ -22,5 +22,3 @@ function ContentList() {
         </>
     )
 }
-
-export default ContentList
