@@ -1,10 +1,10 @@
 import React from 'react'
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import './Content.css'
 
 export default function Content(props) {
+  
   let navigate = useNavigate();
-  let { festname } = useParams();
   
   return (
     <>
