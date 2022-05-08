@@ -1,15 +1,26 @@
 import React from "react";
 import "../App.css";
 
-import { useParams, useNavigate } from "react-router-dom";
 
 
 import Fester from "./Fester.json";
+import OtherInfo from "./OtherInfo";
 
 export default function Fest(props) {
-  let { festname } = useParams();
+
+    let otherInfos = [];
+
+    let getOtherInfos = () => {
+        let i = 0;
+        while(props.fest.otherInfos[i]){
+            otherInfos.push(<OtherInfo info={props.fest.otherInfos[i]}/>);
+            i++;
+        }
+      }
+
 
   return (
+    getOtherInfos(),
     <>
       <div className="fest-main">
         <div className="fest-display">
@@ -21,7 +32,7 @@ export default function Fest(props) {
             </div>
             <div className="infos-other">
               <div className="otherInfos">
-                {props.fest.otherInfos[1]}
+                {otherInfos}
               </div>
             </div>
           </div>
