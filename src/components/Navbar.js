@@ -47,19 +47,19 @@ export default function Navbar() {
                   Calendar
                 </Link>
               </li>
-              <li className='nav-item'>
+              {/*<li className='nav-item'>
                 <Link to='/contact' className='nav-links' onClick={closeMobileMenu}>
                   Contact
                 </Link>
-              </li>
-              <li>
+              </li>*/}
+              {/*<li>
                 <Link to='/sign-up' className='nav-links-mobile' onClick={closeMobileMenu}>
                   Sign Up
                 </Link>
-              </li>
+              </li>*/}
             </ul>
           </div>
-          {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+          {/*{button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}*/}
         </div>
       </nav>
     </>
