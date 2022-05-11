@@ -3,6 +3,7 @@ import '../../App.css'
 import Calendar from 'react-calendar'
 import './Calendar.css';
 import './CalendarPage.css';
+import 'react-calendar/dist/Calendar.css';
 
 
 import { useState } from 'react';
@@ -13,8 +14,6 @@ export default function CalendarPage() {
 
     const onChange = date => {
       setDate(date);
-      console.log(date)
-      
     }
 
     return (
