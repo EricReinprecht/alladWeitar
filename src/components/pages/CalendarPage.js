@@ -23,7 +23,7 @@ export default function CalendarPage() {
           onChange={onChange} 
           value={date}
           minDate={new Date(2022, 1, 1)}
-          
+
         />
       </div>
     );
