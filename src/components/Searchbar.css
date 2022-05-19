@@ -3,7 +3,7 @@ form{
   top: 50%;
   left: 50%;
   transform: translate(-95%,-50%);
-  transition: all 1s;
+  transition: all 0.5s;
   width: 50px;
   height: 50px;
   background: rgb(26, 23, 23);
@@ -38,7 +38,7 @@ input{
   color: white;
   text-align: center;
   font-size: 1.2em;
-  transition: all 1s;
+  transition: all 0.5s;
 }
 
 form:hover{
@@ -60,7 +60,7 @@ form:hover .fa{
     top: 50%;
     left: 50%;
     transform: translate(-82%,-50%);
-    transition: all 1s;
+    transition: all 0.5s;
     width: 50px;
     height: 50px;
     background: rgb(26, 23, 23);

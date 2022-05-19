@@ -1,11 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Searchbar.css";
 
 export default function Searchbar() {
+  const [inputValue, setInputValue] = useState('hallo')
+
+ 
+
   return (
-    <form action="">
-    <input type="search" placeholder="Search here ..."></input>
-    <i class="fa fa-search"></i>
-  </form>
+    <form>
+      <input placeholder="Search here ..." onChange={alert("hallo")} />
+      <i className="fa fa-search"></i>
+    </form>    
   );
 }
