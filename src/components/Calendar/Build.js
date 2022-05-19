@@ -5,11 +5,11 @@ export default function Build(value) {
 
     const calendar = [];
 
-        while(day.isBefore(endDay, "day")){
-            calendar.push(
-                Array(7).fill(0).map(() => day.add(1, "day").clone())
-            )
-        }
+    while(day.isBefore(endDay, "day")){
+        calendar.push(
+            Array(7).fill(0).map(() => day.add(1, "day").clone())
+        )
+    }
 
-        return calendar
-}
+    return calendar
+ }

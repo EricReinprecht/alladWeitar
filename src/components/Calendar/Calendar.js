@@ -4,7 +4,7 @@ import './Calendar.css'
 import { useState, useEffect } from 'react';
 import buildCalendar from './Build';
 
-function Calendar() {
+export default function Calendar() {
 
     const [calendar, setCalendar] = useState([]);
     const [value, setValue] = useState(moment());
@@ -12,18 +12,15 @@ function Calendar() {
     useEffect(() => {
         setCalendar(buildCalendar(value));
     }, [value])
-    
-    
-    
 
     function isSelected(day, value){
         return value.isSame(day, "day")
     }
-    
+
     function beforeToday(day){
         return day.isBefore(new Date(), "day")
     }
-    
+
     function isToday(day){
         return day.isSame(new Date(), "day")
     }
@@ -35,7 +32,10 @@ function Calendar() {
     if(isToday(day)) return "today"
     return "normal"
     }
-    
+
+
+
+
 
   return (
     <>
@@ -56,4 +56,3 @@ function Calendar() {
   )
 }
 
-export default Calendar
