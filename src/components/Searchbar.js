@@ -8,7 +8,7 @@ export default function Searchbar() {
 
   return (
     <form>
-      <input placeholder="Search here ..." onChange={alert("hallo")} />
+      <input placeholder="Search here ..." onChange={console.log("searchbar")} />
       <i className="fa fa-search"></i>
     </form>    
   );

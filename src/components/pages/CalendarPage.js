@@ -4,7 +4,7 @@ import '../../App.css'
 import './Calendar.css';
 import './CalendarPage.css';
 
-import Calendar from '../Calendar';
+import Calendar from '../Calendar/Calendar';
 
 
 import { useState } from 'react';
