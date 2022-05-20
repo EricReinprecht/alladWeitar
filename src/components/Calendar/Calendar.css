@@ -24,12 +24,12 @@
     margin: 0px;
     box-sizing: border-box;
     text-align: center;
-
-
+    cursor: pointer;
+    border: 1px solid lightgrey;
 }
 
 .selected{
-    background-color: red;
+    background-color: lightslategray;
     height: 100%;
     width: 100%;
 
@@ -39,7 +39,7 @@
 }
 
 .today{
-    background-color: goldenrod;
+    background-color: lightblue;
     height: 100%;
     width: 100%;
 
@@ -56,6 +56,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    cursor: no-drop;
 }
 
 .normal{
