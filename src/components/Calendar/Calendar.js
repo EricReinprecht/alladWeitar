@@ -3,6 +3,7 @@ import React from 'react'
 import './Calendar.css'
 import { useState, useEffect } from 'react';
 import buildCalendar from './Build';
+import dayStyles from './Styles';
 
 export default function Calendar() {
 
@@ -13,29 +14,6 @@ export default function Calendar() {
         setCalendar(buildCalendar(value));
     }, [value])
 
-    function isSelected(day, value){
-        return value.isSame(day, "day")
-    }
-
-    function beforeToday(day){
-        return day.isBefore(new Date(), "day")
-    }
-
-    function isToday(day){
-        return day.isSame(new Date(), "day")
-    }
-
-    function dayStyles(day) {
-
-    if(beforeToday(day)) return "before"
-    if(isSelected(day)) return "selected"
-    if(isToday(day)) return "today"
-    return "normal"
-    }
-
-
-
-
 
   return (
     <>
@@ -45,7 +23,7 @@ export default function Calendar() {
                     <div className='week'>
                         {week.map((day) => (
                             <div className='day' onClick={() => setValue(day)}>
-                                <div className={dayStyles(day)}>{day.format("D").toString()}</div>
+                                <div className={dayStyles(day, value)}>{day.format("D").toString()}</div>
                             </div>
                         ))}
 
