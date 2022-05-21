@@ -67,4 +67,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
-} 
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+}
+
+.prev{
+    position: absolute;
+    left: 3%;
+
+    cursor: pointer;
+}
+
+.next{
+    position: absolute;
+    right: 3%;
+
+    cursor: pointer;
+}
+
+.current{
+
+}
