@@ -3,7 +3,8 @@ import React from 'react'
 import './Calendar.css'
 import { useState, useEffect } from 'react';
 import buildCalendar from './Build';
-import dayStyles from './Styles';
+import dayStyles, { beforeToday } from './Styles';
+//import Header from './Header';
 
 export default function Calendar() {
 
@@ -30,12 +31,17 @@ export default function Calendar() {
         return value.clone().subtract(-1, "month")
     }
 
+
+    function thisMonth(){
+        return value.isSame(new Date(), "month")
+    }
+
   return (
     <>
         <div className='calendar-display'>
             <div className='calendar'>
                 <div className='header'>
-                    <div className='prev' onClick={() => setValue(prevMonth())}>{String.fromCharCode(171)}</div>
+                    <div className='prev' onClick={() => !thisMonth() && setValue(prevMonth())}>{!thisMonth() ? String.fromCharCode(171) : null}</div>
                     <div className='current'>{curretMonthName()} {curretYear()}</div>
                     <div className='next' onClick={() => setValue(nextMonth())}>{String.fromCharCode(187)}</div>
                 </div>
@@ -43,7 +49,7 @@ export default function Calendar() {
                     {calendar.map((week) => (
                         <div className='week'>
                             {week.map((day) => (
-                                <div className='day' onClick={() => setValue(day)}>
+                                <div className='day' onClick={() => !beforeToday(day) && setValue(day)}>
                                     <div className={dayStyles(day, value)}>{day.format("D").toString()}</div>
                                 </div>
                             ))}
