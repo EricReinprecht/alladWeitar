@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import Searchbar from './Searchbar';
@@ -52,19 +51,8 @@ export default function Navbar() {
                   Home
                 </Link>
               </li>
-              {/*<li className='nav-item'>
-                <Link to='/contact' className='nav-links' onClick={closeMobileMenu}>
-                  Contact
-                </Link>
-              </li>*/}
-              {/*<li>
-                <Link to='/sign-up' className='nav-links-mobile' onClick={closeMobileMenu}>
-                  Sign Up
-                </Link>
-              </li>*/}
             </ul>
           </div>
-          {/*{button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}*/}
         </div>
       </nav>
     </>

@@ -7,10 +7,16 @@ import './CalendarPage.css'
 
 export default function Home() {
   return (
-      <>
-        <ContentList />
-        <Calendar />
-      </>
+    <>
+      <div className='home-page'>
+        <div className='contentList-container'>
+          <ContentList />
+        </div>
+        <div className='calendar-container'>
+          <Calendar />
+        </div>
+      </div>
+    </>
     )
 }
 
