@@ -1,11 +1,12 @@
 .calendar{
+    display: none;
+
     position: fixed;
 
     top: 150px;
     width: 500px;
 
     border: 1px solid #000;
-    display: block;
 }
 
 .calendar-header{

@@ -24,6 +24,19 @@ export default function Navbar() {
 
   window.addEventListener('resize', showButton);
 
+  let isDisplayed = false;
+
+  function displayCalendar(){
+    let calendar = document.getElementsByClassName("calendar")[0];
+    if(!isDisplayed){
+      calendar.style.display = "block";
+      isDisplayed = true;
+    }else{
+      calendar.style.display ="none";
+      isDisplayed = false;
+    }
+  }
+
   return (
     <>
       <nav className='navbar'>
@@ -32,26 +45,16 @@ export default function Navbar() {
             <i className="fa-solid fa-beer-mug-empty"/>
             <div className='app-name'>alladWeitar</div>
           </Link>
-          <div className='menu-icon' onClick={handleClick}>
-            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
-          </div>
           <div className='searchbar'>
               <Searchbar/>
           </div>
-          <div className='nav-items'>
-            <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-              
-              <li className='nav-item' id="calendar-button">
-                <Link to='/calendar' className='nav-links' onClick={closeMobileMenu}>
-                  Calendar
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link to='/' className='nav-links' id="home-button" onClick={closeMobileMenu}>
-                  Home
-                </Link>
-              </li>
-            </ul>
+          <div className='calendar-button'>
+            <button onClick={() => displayCalendar()}>Calendar</button>
+          </div>
+          <div className='home-button'>
+            <Link to='/' className='nav-links' id="home-button">
+              Home
+            </Link>
           </div>
         </div>
       </nav>

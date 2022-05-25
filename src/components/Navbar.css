@@ -91,6 +91,10 @@
   margin-left: 40vw;
 }
 
+.home-button{
+  display: none;
+}
+
 @media screen and (max-width: 960px) {
   .searchbar {
     z-index: 200;
