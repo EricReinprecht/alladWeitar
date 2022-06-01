@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../../App.css'
 import Calendar from '../Calendar/Calendar'
 import ContentList from '../ContentList'
 import'./Home.css'
+import moment from 'moment'
 
 
 export default function Home() {
+
+  const [value, setValue] = useState(moment());
+
   return (
     <>
       <div className='home-page'>
@@ -13,7 +17,7 @@ export default function Home() {
           <ContentList />
         </div>
         <div className='calendar-container'>
-          <Calendar />
+          <Calendar value={value} setValue={setValue}/>
         </div>
       </div>
     </>

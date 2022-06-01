@@ -24,17 +24,13 @@ export default function Navbar() {
 
   window.addEventListener('resize', showButton);
 
-  let isDisplayed = false;
+
 
   function displayCalendar(){
+    let calendarBackground = document.getElementsByClassName("calendar-background")[0];
     let calendar = document.getElementsByClassName("calendar")[0];
-    if(!isDisplayed){
-      calendar.style.display = "block";
-      isDisplayed = true;
-    }else{
-      calendar.style.display ="none";
-      isDisplayed = false;
-    }
+    calendarBackground.style.display = 'block';
+    calendar.style.display = "block";
   }
 
   return (

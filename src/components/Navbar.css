@@ -8,7 +8,7 @@
   font-size: 1.2rem;
   position: fixed;
   top: 0;
-  z-index: 999;
+  z-index: 1;
 }
 
 .navbar-container {
@@ -87,7 +87,7 @@
   padding: 10px;
 }
 .searchbar {
-  z-index: 200;
+  z-index: 2;
   margin-left: 40vw;
 }
 
