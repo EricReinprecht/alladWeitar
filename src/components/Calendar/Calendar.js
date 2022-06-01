@@ -5,44 +5,32 @@ import buildCalendar from './Build';
 import dayStyles, { beforeToday } from './Styles';
 import Header from './Header';
 import Weekdays from './Weekdays';
+import Background from './Background';
+
 
 export default function Calendar(props) {
 
-
     const [calendar, setCalendar] = useState([]);
+    
 
-    let selectedDates = [];
     
 
     useEffect(() => {
         setCalendar(buildCalendar(props.value));
     }, [props.value])
 
-    function selectDates(){
-        selectedDates.push(props.value);
-
-        selectedDates.forEach(date => {
-            console.log(date)
-        });
-
-        console.log(selectedDates)
+    function selectDates(date){
+        props.selectedDates.pop()
+        props.selectedDates.push(date)
+        console.log(props.selectedDates[0])
     }
-
-    function closeCalendar(){
-        let calendar = document.getElementsByClassName("calendar")[0];
-        let calendarBackground = document.getElementsByClassName("calendar-background")[0];
-        calendar.style.display = 'none';
-        calendarBackground.style.display = 'none';
-    }
-
     
 
   return (
-      
     <>
-    <div className='calendar-background' onClick={() => closeCalendar()}></div>
+        <Background/>
         <div className='calendar'>
-        <button onClick={() => selectDates()}>HALLO</button>
+        <button onClick={() => selectDates(props.value.format("D.M.YYYY"))}>HALLO</button>
            <Header value={props.value} setValue={props.setValue} />
            <Weekdays />
            <div className='body'>
@@ -55,9 +43,7 @@ export default function Calendar(props) {
                        ))}
                </div>))}
            </div>
-           
         </div>  
-         
     </>
   )
 }

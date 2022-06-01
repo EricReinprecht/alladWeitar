@@ -3,13 +3,16 @@ import Content from './Content'
 import Fester from './Fester.json'
 import './ContentList.css'
 
-export default function ContentList() {
+export default function ContentList(props) {
 
     let content = [];
 
     let displayContent = () => {
         Fester.forEach(fest => {
-            content.push(<Content name={fest.name} date={fest.fest[0].date} id={fest.id}/>);
+            if(fest.fest[0].date===props.selectedDates){
+                content.push(<Content name={fest.name} date={fest.fest[0].date} id={fest.id}/>);
+            }
+            
         });
     }
     
