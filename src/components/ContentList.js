@@ -8,8 +8,9 @@ export default function ContentList(props) {
     let content = [];
 
     let displayContent = () => {
+        console.log(props.selectedDates)
         Fester.forEach(fest => {
-            if(fest.fest[0].date===props.selectedDates){
+            if(fest.fest[0].date===props.selectedDates || props.selectedDates===undefined){
                 content.push(<Content name={fest.name} date={fest.fest[0].date} id={fest.id}/>);
             }
             

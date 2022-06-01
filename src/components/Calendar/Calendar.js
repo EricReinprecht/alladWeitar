@@ -6,31 +6,21 @@ import dayStyles, { beforeToday } from './Styles';
 import Header from './Header';
 import Weekdays from './Weekdays';
 import Background from './Background';
+import Buttons from './Buttons';
 
 
 export default function Calendar(props) {
 
     const [calendar, setCalendar] = useState([]);
-    
-
-    
 
     useEffect(() => {
         setCalendar(buildCalendar(props.value));
-    }, [props.value])
-
-    function selectDates(date){
-        props.selectedDates.pop()
-        props.selectedDates.push(date)
-        console.log(props.selectedDates[0])
-    }
-    
+    }, [props.value])    
 
   return (
     <>
         <Background/>
         <div className='calendar'>
-        <button onClick={() => selectDates(props.value.format("D.M.YYYY"))}>HALLO</button>
            <Header value={props.value} setValue={props.setValue} />
            <Weekdays />
            <div className='body'>
@@ -43,6 +33,7 @@ export default function Calendar(props) {
                        ))}
                </div>))}
            </div>
+           <Buttons selectedDates={props.selectedDates} setFest={props.setFest} value={props.value}/>
         </div>  
     </>
   )
