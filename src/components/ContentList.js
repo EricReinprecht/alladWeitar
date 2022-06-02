@@ -9,8 +9,10 @@ export default function ContentList(props) {
 
     let displayContent = () => {
         Fester.forEach(fest => {
-            if(fest.fest[0].date===props.selectedDates || props.selectedDates===undefined){
-                content.push(<Content name={fest.name} date={fest.fest[0].date} id={fest.id}/>);
+            for(let i = 0; i<fest.fest.length; i++){
+                if(fest.fest[i].date===props.selectedDates || props.selectedDates===undefined){
+                    content.push(<Content name={fest.name} date={fest.fest[i].date} id={fest.id}/>);
+                }
             }
         });
     }
