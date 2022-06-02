@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import './Content.css'
 
 export default function Content(props) {
-
-  
   
   let navigate = useNavigate();
 
@@ -12,8 +10,6 @@ export default function Content(props) {
     let calendarButton = document.getElementsByClassName("calendar-button")[0];
     calendarButton.style.display = "none";
     navigate('/fest/' + props.name);
-    
-    console.log("hallo")
   }
   
   return (
