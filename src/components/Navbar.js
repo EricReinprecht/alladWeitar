@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import Searchbar from './Searchbar';
+//import Searchbar from './Searchbar';
 
 export default function Navbar() {
 
@@ -26,11 +26,13 @@ export default function Navbar() {
             <i className="fa-solid fa-beer-mug-empty"/>
             <div className='app-name'>alladWeitar</div>
           </Link>
-          <div className='searchbar'>
+          {/*<div className='searchbar-container'>
+            <div className='searchbar'>
               <Searchbar/>
-          </div>
-          <div className='calendar-button'>
-            <button onClick={() => displayCalendar()}>Calendar</button>
+            </div> 
+          </div>*/}
+          <div className='calendar-button-container'>
+            <button className='calendar-button' onClick={() => displayCalendar()}>Calendar</button>
           </div>
           <div className='home-button'>
             <Link to='/' className='nav-links' id="home-button">

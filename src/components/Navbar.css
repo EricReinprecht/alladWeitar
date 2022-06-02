@@ -16,7 +16,7 @@
   justify-content: center;
   align-items: center;
   height: 80px;
-  max-width: 1500px;
+  width: 100%;
 }
 
 .navbar-logo {
@@ -86,20 +86,65 @@
 .fa-beer-mug-empty {
   padding: 10px;
 }
-.searchbar {
+.searchbar-container {
+  background-color: rgb(26, 23, 23);
+  height: 80px;
+  width: 40%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  margin-right: 40%;
   z-index: 2;
-  margin-left: 40vw;
+}
+
+.searchbar{
+  position: relative;
+  right: 0px;
 }
 
 .home-button{
   display: none;
 }
 
+.calendar-button {
+  background-color: rgb(26, 23, 23);
+  height: 80px;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.calendar-button:hover{
+ background-color: #fff;
+ color: rgb(26, 23, 23);
+ transition: 250ms;
+}
+
+.calendar-button-container {
+  position: absolute;
+  top: 0px;
+  right: 10%;
+}
+
+
+
 @media screen and (max-width: 960px) {
   .searchbar {
-    z-index: 200;
-    margin-left: 60vw;
+    z-index: 2;
+    
   }
+
+  .calendar-button-container {
+    position: absolute;
+    top: 0px;
+    right: 7%;
+  }
+
   .NavbarItems {
     position: relative;
   }
@@ -127,20 +172,6 @@
   .nav-items {
     position: static;
   }
-
-  /*.nav-item{
-      position: absolute;
-      width: 100vw;
-    }
-
-    #calendar-button{
-      bottom: 100px;
-    }
-
-    #home-button{
-      position: absolute;
-      bottom: 200px;
-    }*/
 
   .nav-links {
     text-align: center;
@@ -196,5 +227,13 @@
     background: #fff;
     color: #242424;
     transition: 250ms;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .calendar-button-container {
+    position: absolute;
+    top: 0px;
+    right: 0px;
   }
 }
