@@ -33,7 +33,7 @@ export default function Calendar(props) {
                        ))}
                </div>))}
            </div>
-           <Buttons selectedDates={props.selectedDates} setFest={props.setFest} value={props.value}/>
+           <Buttons selectedDates={props.selectedDates} fest={props.fest} setFest={props.setFest} value={props.value}/>
         </div>  
     </>
   )

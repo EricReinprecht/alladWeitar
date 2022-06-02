@@ -7,8 +7,13 @@ export default function Buttons(props) {
     let calendarBackground = document.getElementsByClassName("calendar-background")[0];
 
     function diplayFilteredFestList(){
+      props.setFest(<ContentList selectedDates={props.selectedDates[0]}/>);
+    }
 
-      }
+    function diplayDefaultFestList(){
+      props.setFest(<ContentList selectedDates={undefined}/>);
+    }
+
 
     function closeCalendar(){
         calendar.style.display = 'none';
@@ -17,15 +22,19 @@ export default function Buttons(props) {
 
     function selectDates(date){
         closeCalendar();
-        props.selectedDates.pop()
-        props.selectedDates.push(date)
+        props.selectedDates.pop();
+        props.selectedDates.push(date);
         diplayFilteredFestList();
+        
     }
 
     function deleteFilter(){
         closeCalendar();
-        props.selectedDates.pop()
+        props.selectedDates.pop();
+        diplayDefaultFestList();
     }
+
+
 
   return (
     <>

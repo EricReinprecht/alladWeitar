@@ -14,9 +14,7 @@ export default function Home() {
 
 
 
-  function diplayFilteredFestList(){
-    setFest(<ContentList selectedDates={selectedDates[0]}/>)
-  }
+  
 
   return (
     <>
@@ -26,10 +24,9 @@ export default function Home() {
           {fest}
         </div>
         <div className='calendar-container'>
-          <Calendar value={value} setValue={setValue} selectedDates={selectedDates} setDates={setDates}/>
+          <Calendar value={value} setValue={setValue} selectedDates={selectedDates} setDates={setDates} fest={fest} setFest={setFest}/>
         </div>
       </div>
-      <button className="hallo" onClick={() => diplayFilteredFestList()}>hallo</button>
     </>
     )
 }
