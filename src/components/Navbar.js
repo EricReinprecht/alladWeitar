@@ -24,9 +24,14 @@ export default function Navbar() {
 
   window.addEventListener('resize', showButton);
 
+  let calendarButton = document.getElementsByClassName("calendar-button")[0];
 
+  function onClickHomeButton(){
+    calendarButton.style.display = "block";
+  }
 
   function displayCalendar(){
+    console.log(window.location)
     let calendarBackground = document.getElementsByClassName("calendar-background")[0];
     let calendar = document.getElementsByClassName("calendar")[0];
     calendarBackground.style.display = 'block';
@@ -37,7 +42,7 @@ export default function Navbar() {
     <>
       <nav className='navbar'>
         <div className='navbar-container'>
-          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+          <Link to='/' className='navbar-logo' onClick={() => onClickHomeButton()}>
             <i className="fa-solid fa-beer-mug-empty"/>
             <div className='app-name'>alladWeitar</div>
           </Link>
