@@ -15,13 +15,13 @@ export default function Calendar(props) {
 
     useEffect(() => {
         setCalendar(buildCalendar(props.value));
-    }, [props.value])    
+    }, [props.value]); 
 
   return (
     <>
         <Background/>
         <div className='calendar'>
-           <Header value={props.value} setValue={props.setValue} />
+           <Header value={props.value} setValue={props.setValue}/>
            <Weekdays />
            <div className='body'>
                {calendar.map((week) => (
