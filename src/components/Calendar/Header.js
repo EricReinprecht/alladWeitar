@@ -5,23 +5,23 @@ import moment from 'moment'
 export default function CalendarHeader(props) {
 
     function curretMonthName(){
-        return moment(props.value).format("MMMM")
+        return moment(props.value).format("MMMM");
     }
 
     function curretYear(){
-        return moment(props.value).format("YYYY")
+        return moment(props.value).format("YYYY");
     }
 
     function prevMonth(){
-        return moment(props.value).clone().subtract(1, "month")
+        return moment(props.value).clone().subtract(1, "month");
     }
 
     function nextMonth(){
-        return moment(props.value).clone().subtract(-1, "month")
+        return moment(props.value).clone().subtract(-1, "month");
     }
 
     function thisMonth(){
-        return props.value.isSame(new Date(), "month")
+        return props.value.isSame(new Date(), "month");
     }
 
   return (

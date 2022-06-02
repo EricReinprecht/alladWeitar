@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react'
+import React, { useState } from 'react'
 import '../../App.css'
 import Calendar from '../Calendar/Calendar'
 import ContentList from '../ContentList'
@@ -11,10 +11,6 @@ export default function Home() {
   const [value, setValue] = useState(moment());
   const [selectedDates, setDates] = useState([]);
   const [fest, setFest] = useState();
-
-
-
-  
 
   return (
     <>

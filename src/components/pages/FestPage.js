@@ -18,7 +18,7 @@ export default function FestPage() {
   let getFest = () => {
     let i = 0;
     while(data[0].fest[i]){
-      fester.push(<Fest fest={data[0].fest[i]}/>)
+      fester.push(<Fest fest={data[0].fest[i]}/>);
       i++;
     }
   }
@@ -27,7 +27,6 @@ export default function FestPage() {
     getFest(),
     <>
     <div className="festpage-main">
-      
       <div className="header">{festname}</div>
       <div className="fester">
         {fester}
