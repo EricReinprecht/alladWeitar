@@ -125,6 +125,10 @@
   cursor: pointer;
 }
 
+.navbar-logo:hover{
+  color: rgb(187, 233, 236);;
+}
+
 .calendar-button-container {
   position: absolute;
   top: 0px;
