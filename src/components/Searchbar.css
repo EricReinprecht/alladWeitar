@@ -1,3 +1,7 @@
+:root {
+  --primary: #fff;
+}
+
 form{
   position: relative;
   top: 50%;
@@ -35,7 +39,7 @@ input{
   top: 29px;
   right: 0;
   border-radius: 50%;
-  color: white;
+  color: var(--primary);
   text-align: center;
   font-size: 1.2em;
   transition: all 0.5s;
@@ -50,7 +54,7 @@ form:hover input{
 }
 
 form:hover .fa{
-  background: white;
+  background: var(--primary);
   color: black;
 }
 
@@ -78,7 +82,7 @@ form:hover input{
 }
 
 form:hover .fa{
-    background: white;
+    background: var(--primary);
     color: black;
 }
 }

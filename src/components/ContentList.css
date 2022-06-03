@@ -1,3 +1,8 @@
+:root {
+  --primary: #fff;
+  --secondary: rgb(26, 23, 23);
+}
+
 ::-webkit-scrollbar {
     display: none;
   }
@@ -15,7 +20,7 @@
     
     padding: 20px;
   
-    background: rgb(255, 255, 255);
+    background: var(--primary);
     text-shadow: none;
   
     position: absolute;

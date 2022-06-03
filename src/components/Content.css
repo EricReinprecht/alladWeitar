@@ -1,3 +1,8 @@
+:root {
+    --primary: #fff;
+    --secondary: rgb(26, 23, 23);
+  }
+
 .content {
     display: flex;
     justify-content: space-between;
@@ -23,7 +28,7 @@
 }
 
 .content:hover .info{
-    color: white;
+    color: var(--primary);
 }
 
 .info {

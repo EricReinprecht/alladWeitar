@@ -1,7 +1,11 @@
+:root {
+    --primary: #fff;
+    --secondary: rgb(26, 23, 23);
+  }
+
 .fest-display{
     width: 80%;
     margin-bottom: 20px;
-
 }
 
 .info{
