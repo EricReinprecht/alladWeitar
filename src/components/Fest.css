@@ -1,5 +1,5 @@
 .fest-display{
-    width: 400px;
+    width: 600px;
     margin-bottom: 20px;
 
 }
@@ -11,4 +11,8 @@
 
 .text{
     font-size: 19.5px;
+}
+
+p{
+    height: 20px;
 }

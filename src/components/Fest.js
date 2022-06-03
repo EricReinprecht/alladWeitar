@@ -25,6 +25,7 @@ export default function Fest(props) {
           <div className="info date"><div className='text statement'>Datum</div><div className='text data'>: {props.fest.date}</div></div>
           <div className="info startTime"><div className='text statement'>Wann</div><div className='text data'>: {props.fest.startTime}</div></div>
         </div>
+        <p></p>
         <div className="other-infos">
             {otherInfos}
         </div>

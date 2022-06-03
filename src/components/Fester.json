@@ -6,7 +6,11 @@
                 "location": "Doren Fußballplatz",
                 "startTime": "9:00",
                 "entryCard": "Nein",
-                "otherInfos": ["Zuastzinfo", "Zusatzinfo", "akak"]
+                "otherInfos": ["10:00: Altherren", 
+                    "14:30: Gaude Fußballtunier & Völkerballtunier", 
+                    "18:00: Abenkassa 8€", 
+                    "20:30: Bebe Jukes", 
+                    "Attraktionen: Cocktailbar, Menschenkicker, Hüpfburg"]
             }
         ]
     },
