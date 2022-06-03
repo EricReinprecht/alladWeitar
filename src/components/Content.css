@@ -1,6 +1,7 @@
 :root {
     --primary: #fff;
     --secondary: rgb(26, 23, 23);
+    --tertiary: #242424
   }
 
 .content {
@@ -9,7 +10,7 @@
     align-items: center;
     flex-direction: row;
 
-    border: #242222 1px solid;
+    border: var(--tertiary) 1px solid;
 
     margin-top: 2%;
     text-decoration: none;
@@ -24,7 +25,7 @@
 }
 
 .content:hover{
-    background-color: #242222;
+    background-color: var(--tertiary);
 }
 
 .content:hover .info{
@@ -33,7 +34,7 @@
 
 .info {
     text-decoration: none;
-    color:#242222;
+    color:var(--tertiary);
     font-size: 20px;
     font-weight: 400;
     transition: 250ms;

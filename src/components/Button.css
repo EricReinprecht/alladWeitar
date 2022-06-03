@@ -1,6 +1,7 @@
 :root {
     --primary: #fff;
     --secondary: rgb(26, 23, 23);
+    --tertiary: #242424
   }
   
   .btn {
@@ -13,7 +14,7 @@
   
   .btn--primary {
     background-color: var(--primary);
-    color: #242424;
+    color: var(--tertiary);
     border: 1px solid var(--primary);
   }
   
@@ -39,6 +40,6 @@
   .btn--medium:hover {
     transition: all 0.3s ease-out;
     background: var(--primary);
-    color: #242424;
+    color: var(--tertiary);
     transition: 250ms;
   }
