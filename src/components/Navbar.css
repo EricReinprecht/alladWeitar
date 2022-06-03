@@ -132,7 +132,7 @@
 
 @media screen and (min-width: 760px) {
   .calendar-button:hover{
-    background-color: var(--primary);
+    background-color: rgb(187, 233, 236);
     color: var(--secondary);
     transition: 250ms;
    }
@@ -141,7 +141,6 @@
 @media screen and (max-width: 960px) {
   .searchbar {
     z-index: 2;
-    
   }
 
   .calendar-button-container {
