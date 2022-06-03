@@ -13,7 +13,7 @@ export default function App() {
       <Routes>
           <Route path="/" element={<Home />} exact={true} />
           <Route path="/fest/:festname" element={<FestPage />} exact={true} />
-          <Route path="*" element={<ErrorPage />} exact={true}/>
+          <Route path="/404" element={<ErrorPage />} exact={true}/>
       </Routes>
     </Router>
   );
