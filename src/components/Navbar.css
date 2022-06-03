@@ -119,19 +119,19 @@
   cursor: pointer;
 }
 
-.calendar-button:hover{
- background-color: #fff;
- color: rgb(26, 23, 23);
- transition: 250ms;
-}
-
 .calendar-button-container {
   position: absolute;
   top: 0px;
   right: 10%;
 }
 
-
+@media screen and (min-width: 760px) {
+  .calendar-button:hover{
+    background-color: #fff;
+    color: rgb(26, 23, 23);
+    transition: 250ms;
+   }
+}
 
 @media screen and (max-width: 960px) {
   .searchbar {
