@@ -102,5 +102,53 @@
                 "otherInfos": [""]
             }
         ]
-    }  
+    },
+    {   "name": "FC Doren Vereinsfest",
+        "fest": [
+            {
+                "date": "4.2.2024",
+                "location": "Doren Fußballplatz",
+                "startTime": "9:00",
+                "entryCard": "Nein",
+                "otherInfos": ["10:00: Altherren", 
+                    "14:30: Gaude Fußballtunier & Völkerballtunier", 
+                    "18:00: Abenkassa 8€", 
+                    "20:30: Bebe Jukes", 
+                    "2:00: Ende Gelände",
+                    "Attraktionen: Cocktailbar, Menschenkicker, Hüpfburg"]
+            }
+        ]
+    },
+    {   "name": "FC Doren Vereinsfest",
+        "fest": [
+            {
+                "date": "4.5.2024",
+                "location": "Doren Fußballplatz",
+                "startTime": "9:00",
+                "entryCard": "Nein",
+                "otherInfos": ["10:00: Altherren", 
+                    "14:30: Gaude Fußballtunier & Völkerballtunier", 
+                    "18:00: Abenkassa 8€", 
+                    "20:30: Bebe Jukes", 
+                    "2:00: Ende Gelände",
+                    "Attraktionen: Cocktailbar, Menschenkicker, Hüpfburg"]
+            }
+        ]
+    },  
+    {   "name": "FC Doren Vereinsfest",
+        "fest": [
+            {
+                "date": "4.1.2024",
+                "location": "Doren Fußballplatz",
+                "startTime": "9:00",
+                "entryCard": "Nein",
+                "otherInfos": ["10:00: Altherren", 
+                    "14:30: Gaude Fußballtunier & Völkerballtunier", 
+                    "18:00: Abenkassa 8€", 
+                    "20:30: Bebe Jukes", 
+                    "2:00: Ende Gelände",
+                    "Attraktionen: Cocktailbar, Menschenkicker, Hüpfburg"]
+            }
+        ]
+    }
 ] 
