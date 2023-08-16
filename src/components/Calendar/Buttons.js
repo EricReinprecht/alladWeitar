@@ -1,5 +1,5 @@
 import React from 'react'
-import ContentList from '../ContentList';
+import ContentList from '../PartyDisplay/ContentList';
 
 export default function Buttons(props) {
 

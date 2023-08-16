@@ -1,91 +1,55 @@
-:root {
-  --primary: rgb(255, 255, 254);
-  --secondary: rgb(26, 23, 23);
-  --tertiary: #242424
-}
-
-form{
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-95%,-50%);
-  transition: all 0.5s;
-  width: 50px;
-  height: 50px;
-  background: var(--secondary);
-  box-sizing: border-box;
-  border-radius: 25px;
+.searchbar {
+  display: flex;
+  align-items: center;
+  background-color: #f3f3f3;
+  border-radius: 4px;
   padding: 5px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+  position: relative; /* Add position for the menu */
 }
 
-input{
-  position: absolute;
-  top: 29px;
-  left: 0;
-  width: 100%;;
-  height: 42.5px;
-  line-height: 30px;
-  outline: 0;
-  border: 0;
-  display: none;
-  font-size: 1em;
-  border-radius: 20px;
-  padding: 0 20px;
-}
-.fa{
-  box-sizing: border-box;
+.input-container {
+  flex: 1;
   padding: 10px;
-  width: 42.5px;
-  height: 42.5px;
-  position: absolute;
-  top: 29px;
-  right: 0;
-  border-radius: 50%;
-  color: var(--primary);
-  text-align: center;
-  font-size: 1.2em;
-  transition: all 0.5s;
+  background-color: #ffffff;
+  border-radius: 4px 0 0 4px;
 }
 
-form:hover{
-  width: 20vw;
+input[type="text"] {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  color: #333;
+  padding: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.menu-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
   cursor: pointer;
 }
-form:hover input{
-  display: block;
-}
 
-form:hover .fa{
-  background: var(--primary);
-  color: var(--secondary);
-}
-
-@media screen and (max-width: 960px) {
-  form{
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-82%,-50%);
-    transition: all 0.5s;
-    width: 50px;
-    height: 50px;
-    background: var(--secondary);
-    box-sizing: border-box;
-    border-radius: 25px;
-    padding: 5px;
+/* Media Query for Responsive Design */
+@media screen and (max-width: 480px) {
+  .searchbar {
+    flex-direction: column;
+    align-items: flex-start;
   }
-form:hover{
-    width: 95vw;
-    cursor: pointer;
+
+  .input-container {
+    border-radius: 4px; /* Adjust border radius for responsive layout */
+    margin-bottom: 5px;
+  }
+
+  .menu-icon {
+    top: 10px;
+    right: 10px;
+  }
 }
 
-form:hover input{
-    display: block;
-}
-
-form:hover .fa{
-    background: var(--primary);
-    color: var(--secondary);
-}
-}
-  

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { collection, getDocs, query, where, getFirestore } from 'firebase/firestore';
+import './Searchbar.css'
 
 const SearchBar = ({ setResults }) => {
   const [input, setInput] = useState("");
@@ -36,13 +37,14 @@ const SearchBar = ({ setResults }) => {
 
   return (
     <div className="searchbar">
-      <input
-        type="text"
-        placeholder="Search"
-        value={input}
-        onChange={(event) => handleChange(event.target.value)}
-      />
-      <button className="bg-white p-4">🔍</button>
+      <div className={"input-container"}>
+        <input
+            type="text"
+            placeholder="Search"
+            value={input}
+            onChange={(event) => handleChange(event.target.value)}
+        />
+      </div>
     </div>
   );
 };

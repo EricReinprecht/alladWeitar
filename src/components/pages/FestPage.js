@@ -1,11 +1,11 @@
 import React from "react";
 import "../../App.css";
 import "./FestPage.css";
-import Fest from "../Fest.js"
+import Fest from "../PartyDisplay/Fest.js"
 import { useParams } from "react-router-dom";
 
 
-import Fester from "../Fester.json";
+import Fester from "../PartyDisplay/Fester.json";
 
 export default function FestPage() {
 

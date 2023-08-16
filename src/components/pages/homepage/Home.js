@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import '../../../App.css'
-import Calendar from '../../Calendar/Calendar'
-import ContentList from '../../ContentList'
 import'./Home.css'
 import moment from 'moment'
+import PartyDisplay from "../../PartyDisplay/PartyDisplay";
 
 
-export default function Home() {
+export default function Home({results}) {
 
   const [value, setValue] = useState(moment());
   const [selectedDates, setDates] = useState([]);
@@ -15,9 +14,7 @@ export default function Home() {
   return (
     <>
       <div className='home-page'>
-        <div className='contentList-container'>
-          <div className="defaultFestList"><ContentList/></div>
-          {fest}
+          <div className="defaultFestList"><PartyDisplay results={results}/>
         </div>
       </div>
     </>
