@@ -1,27 +1,27 @@
-import React, { useState } from "react";
+
 import { Link } from "react-router-dom";
-import SearchBar from "./Searchbar"; // Make sure the path to SearchBar is correct
-import SearchResults from "./SearchResults"; // Make sure the path to SearchBar is correct
-import "./Navbar.css"
 
-const Navbar = () => {
-  const [results, setResults] = useState([]); // Initialize state for search results
+import "./Navbar.css";
+import React, { useState } from "react";
+import Searchbar from "./Searchbar";
 
-  return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          <div className="app-name">AlladWeitar</div>
-        </Link>
-        <div>Filter</div>
-        <SearchBar setResults={setResults} />
-        <SearchResults results={results}/>
-        <div>Profile</div>
-        <div>purchase cart</div>
-        <div>Cards</div>
-      </div>
-    </nav>
-  );
+const Navbar = ({setResults}) => {
+
+    return (
+        <nav className="navbar">
+            <div className="navbar-container">
+                <Link to="/" className="nav-item" id="logo">
+                    <div className="app-name">AlladWeitar</div>
+                </Link>
+                <div className="nav-item" id={"filter"}>Filter</div>
+                <div className="nav-item" id={"searchbar"}><Searchbar setResults={setResults}/></div>
+                <div className="nav-item" id={"profile"}>Profile</div>
+                <div className="nav-item" id={"cart"}>purchase cart</div>
+                <div className="nav-item" id={"cards"}>Cards</div>
+                <div className="menu-icon">&#9776;</div>
+            </div>
+        </nav>
+    );
 };
 
-export default Navbar;
+    export default Navbar;

@@ -1,0 +1,28 @@
+.display {
+
+    height: 90vh;
+    width: 100%;
+    background: #19d392;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    /*padding: 20px;
+
+    background: var(--primary);
+    text-shadow: none;
+
+    position: absolute;
+    top: 80px;*/
+}
+
+.list{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}

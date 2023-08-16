@@ -1,16 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 
-const SearchResults = ({results}) => {
-
+const SearchResults = ({ results }) => {
   return (
-    <>
-    <div className="results-list">
-        {results.map((result, id) => {
-            return <div key={id}>{result.name}</div>
-        })}
-    </div>
-    </>
+      <div className="results-list">
+        {results.map((result, id) => (
+            <div key={id}>{result.name}</div>
+        ))}
+      </div>
   );
 };
 
