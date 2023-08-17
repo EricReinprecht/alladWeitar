@@ -1,10 +1,10 @@
-import './LoginPage.css';
-import { nanoid } from 'nanoid';
-import {useEffect, useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import './LoginPage.css'
+import {nanoid} from "nanoid";
 
-export default function Login({ setUser }) {
+function LoginPage({ setUser }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -16,7 +16,6 @@ export default function Login({ setUser }) {
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
-
             console.log('Logged in successfully:', user);
             setIsLoggedIn(true);
             setUser(user); // Set the user data
@@ -35,23 +34,38 @@ export default function Login({ setUser }) {
 
     return (
         <div className="login-page">
-            <div className="login">
-                <div>Email or Number</div>
-                <input
-                    type="text"
-                    placeholder="Enter your email or number"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <div>Password</div>
-                <input
-                    type="password"
-                    placeholder="Enter your password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <button onClick={handleLogin}>Login</button>
-            </div>
+            <form className="login-form">
+                <div className="heading">
+                    <h2>Login</h2>
+                </div>
+                <div className="inputs">
+                    <div className="input-container">
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            className="login-input"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div className="input-container">
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            className="login-input"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                </div>
+                <div className="button-container">
+                    <button type="button" onClick={handleLogin}>
+                        Login
+                    </button>
+                </div>
+            </form>
         </div>
     );
 }
+
+export default LoginPage;

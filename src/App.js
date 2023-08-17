@@ -9,9 +9,7 @@ import UserHomePage from "./components/pages/HomePage/UserHomePage";
 import Navbar from "./components/NavBar/Navbar";
 import HomePage from "./components/pages/HomePage/HomePage";
 import ErrorPage from "./components/pages/ErrorPage/ErrorPage";
-import Login from "./components/pages/LoginPage/LoginPage";
-import {getAuth} from "firebase/auth";
-import {getFirestore} from "firebase/firestore"; // Import logged-out navigation bar component
+import LoginPage from "./components/pages/LoginPage/LoginPage"; // Import logged-out navigation bar component
 
 export default function App() {
     const firebaseConfig = {
@@ -36,7 +34,7 @@ export default function App() {
 
                 <Routes>
                     <Route path="/" element={<HomePage results={results} />} />
-                    <Route path="/login" element={<Login setUser={setUser} />} />
+                    <Route path="/login" element={<LoginPage setUser={setUser} />} />
                     <Route path="/user/:token" element={<UserHomePage user={user} results={results} />} />
                     <Route path="/404" element={<ErrorPage />} />
                     <Route path="*" element={<Navigate to="/404" />} />

@@ -10,6 +10,7 @@
     "firebase": "^10.1.0",
     "moment": "^2.29.3",
     "moment-timezone": "^0.5.34",
+    "nanoid": "^4.0.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-moment": "^1.1.2",
