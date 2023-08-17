@@ -10,6 +10,7 @@ import Navbar from "./components/NavBar/Navbar";
 import HomePage from "./components/pages/HomePage/HomePage";
 import ErrorPage from "./components/pages/ErrorPage/ErrorPage";
 import LoginPage from "./components/pages/LoginPage/LoginPage"; // Import logged-out navigation bar component
+import { getFirestore } from "firebase/firestore";
 
 export default function App() {
     const firebaseConfig = {
@@ -23,6 +24,8 @@ export default function App() {
     };
 
     initializeApp(firebaseConfig);
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
     const [results, setResults] = useState([]);
     const [user, setUser] = useState(null);
