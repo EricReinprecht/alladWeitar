@@ -1,98 +1,62 @@
 @import url("../../main.css");
 
+/* Navbar */
 .navbar {
   background: var(--secondary);
-  height: 15%;
+  height: 100px; /* Increase the height as desired */
   width: 100%;
-  font-size: 1.2rem;
-  position: fixed;
-  top: 0;
-  z-index: 1;
-}
-
-.navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-direction: row;
-  height: 100%;
-  width: 100%;
-  padding-left: 3%;
-  padding-right: 3%;
+  padding: 0 20px; /* Add some horizontal padding */
+  position: fixed;
 }
 
-.nav-item{
-  display: flex;
-  align-items: center;
-  height: 100%;
-  text-decoration: none;
-  cursor: pointer;font-size: 1.5rem;
-
-}
-
-.nav-item:hover{
-  color: rgb(196, 30, 30);
-}
-
+/* Logo */
 #logo {
+  text-decoration: none;
   color: var(--primary);
   font-size: 2rem;
+  padding-left: 1rem;
+  padding-right:2rem;
 }
 
-#logo:hover{
-  color: rgb(196, 30, 30);
+/* Searchbar */
+#searchbar {
+  flex-grow: 1; /* Allow search bar to grow and take remaining space */
 }
 
-#filter{}
-
-#searchbar{
+/* List Container */
+#list-container {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 50%;
+  justify-content: flex-end;
 }
 
-#profile{}
-
-#cart{}
-
-#cards{
+/* List */
+#list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
 }
 
-.menu-icon {
-  display: none; /* Initially hide the menu icon */
-  font-size: 24px;
-  cursor: pointer;
-  margin-left: auto; /* Pushes the menu icon to the right */
+/* List Item */
+#list li {
+  margin: 0 10px; /* Add some horizontal spacing between items */
 }
 
-@media screen and (max-width: 1100px) {
-  .navbar-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .nav-item {
-    display: none; /* Hide all nav items */
-  }
-
-  .menu-icon {
-    display: block; /* Show the menu icon */
-  }
-
-  #searchbar-container {
-    width: 100%;
-    justify-content: flex-start;
-  }
-  #searchbar {
-    width: calc(100% + 100%); /* Adjust width to take up full space minus padding */
-    justify-content: flex-start;
-  }
-
+/* Links */
+#list a {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 1.3rem;
 }
 
-@media screen and (min-width: 1100px) {
-  .nav-item {
-    display: flex; /* Re-show the nav items */
-  }
+/* On Hover */
+#list a:hover {
+  color: var(--accent); /* Change color on hover */
 }
+
+/* Additional CSS rules as needed for styling */

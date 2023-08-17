@@ -1,0 +1,14 @@
+.results-list{
+    width: 100%;
+    margin-top: 100px;
+}
+
+.result{
+    width: 100%;
+    height: 80px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #ffff19;
+}

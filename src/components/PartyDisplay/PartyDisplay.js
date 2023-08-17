@@ -6,28 +6,9 @@ export default function PartyDisplay({results}) { // Object destructuring for pr
     console.log(results)
     return (
         <>
-            <div>hallo</div>
             <div className="display">
                 <div className={"list"}>
-
-                    <div>hallo</div>
-                    <div>hallo</div>
-                    <div>hallo</div>
-                    <div>hallo</div>
-                    <div>hallo</div>
-                    <div>hallo</div>
-                    <div>hallo</div>
-                    <div>hallo</div>
-                    <div>hallo</div>
-                    <div>hallo</div>
-                    <div>hallo</div>
-                    <div>hallo</div>
-                    <div>hallo</div>
-                    <div>hallo</div>
-                    <div>hallo</div>
-                    <div>hallo</div>
-                    <div>hallo</div>
-                    <div>hallo</div>
+                    <SearchResults results={results}/>
                 </div>
             </div>
         </>

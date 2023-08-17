@@ -6,11 +6,11 @@ export default function Buttons(props) {
     let calendar = document.getElementsByClassName("calendar")[0];
     let calendarBackground = document.getElementsByClassName("calendar-background")[0];
 
-    function diplayFilteredFestList(){
+    function displayFilteredFestList(){
       props.setFest(<ContentList selectedDates={props.selectedDates[0]}/>);
     }
 
-    function diplayDefaultFestList(){
+    function displayDefaultFestList(){
       props.setFest(<ContentList selectedDates={undefined}/>);
     }
 
@@ -24,14 +24,14 @@ export default function Buttons(props) {
         closeCalendar();
         props.selectedDates.pop();
         props.selectedDates.push(date);
-        diplayFilteredFestList();
+        displayFilteredFestList();
         
     }
 
     function deleteFilter(){
         closeCalendar();
         props.selectedDates.pop();
-        diplayDefaultFestList();
+        displayDefaultFestList();
     }
 
 
