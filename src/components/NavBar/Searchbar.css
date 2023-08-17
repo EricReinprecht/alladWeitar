@@ -1,7 +1,9 @@
+@import url("../../main.css");
+
 .searchbar {
   display: flex;
   align-items: center;
-  background-color: #f3f3f3;
+  background-color: var(--primary);
   border-radius: 4px;
   padding: 5px;
   width: 100%;
@@ -14,7 +16,7 @@
 .input-container {
   flex: 1;
   padding: 10px;
-  background-color: #ffffff;
+  background-color: var(--primary);
   border-radius: 4px 0 0 4px;
 }
 
@@ -22,7 +24,7 @@ input[type="text"] {
   width: 100%;
   border: none;
   background-color: transparent;
-  color: #333;
+  color: var(--secondary);
   padding: 8px;
   font-size: 14px;
   outline: none;

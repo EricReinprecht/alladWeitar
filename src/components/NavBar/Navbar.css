@@ -1,62 +1,63 @@
 @import url("../../main.css");
 
-/* Navbar */
 .navbar {
-  background: var(--secondary);
-  height: 100px; /* Increase the height as desired */
+  background-color: var(--secondary);
+  height: 100px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px; /* Add some horizontal padding */
+  padding: 0 20px;
   position: fixed;
 }
 
-/* Logo */
 #logo {
   text-decoration: none;
   color: var(--primary);
   font-size: 2rem;
   padding-left: 1rem;
   padding-right:2rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-/* Searchbar */
+#logo:hover{
+  color: var(--accent);
+}
+
 #searchbar {
   flex-grow: 1; /* Allow search bar to grow and take remaining space */
 }
 
-/* List Container */
-#list-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-/* List */
 #list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
 }
 
-/* List Item */
 #list li {
-  margin: 0 10px; /* Add some horizontal spacing between items */
+  margin: 0 10px;
+  height: 100%;
 }
 
-/* Links */
 #list a {
   text-decoration: none;
+  height: 100%;
   color: var(--primary);
   font-weight: bold;
   font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-/* On Hover */
 #list a:hover {
-  color: var(--accent); /* Change color on hover */
+  color: var(--accent);
 }
 
-/* Additional CSS rules as needed for styling */
