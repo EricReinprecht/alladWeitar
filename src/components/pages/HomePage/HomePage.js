@@ -5,7 +5,7 @@ import moment from 'moment'
 import PartyDisplay from "../../PartyDisplay/PartyDisplay";
 
 
-export default function Home({results}) {
+export default function HomePage({results}) {
 
   const [value, setValue] = useState(moment());
   const [selectedDates, setDates] = useState([]);

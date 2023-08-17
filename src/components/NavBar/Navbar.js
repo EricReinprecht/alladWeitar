@@ -16,7 +16,7 @@ const Navbar = ({setResults}) => {
 
                     <ul id="list">
                         <li><a href={"/"}>Filter</a></li>
-                        <li><a href={"/"}>Profile</a></li>
+                        <li><a href={"/login"}>Login</a></li>
                         <li><a href={"/"}>purchase cart</a></li>
                         <li><a href={"/"}>Cards</a></li>
                     </ul>
