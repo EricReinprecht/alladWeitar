@@ -10,10 +10,10 @@
 
 .searchbar input[type="text"] {
   width: 100%;
-  padding: 10px;
+  padding: 13px;
   border: 1px solid var(--tertiary); /* Tertiary color */
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 18px;
   color: var(--secondary); /* Secondary color */
   transition: border-color 0.3s;
 }
