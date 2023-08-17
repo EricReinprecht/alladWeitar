@@ -1,59 +1,57 @@
-import React, { useState } from 'react';
-import {auth, db} from '../../../firebaseConfig'
-import './LoginPage.css'
+import './LoginPage.css';
+import { nanoid } from 'nanoid';
+import {useEffect, useState} from 'react';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
-
-function LoginPage() {
+export default function Login({ setUser }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [userData, setUserData] = useState(null); // Store user data
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
+    const auth = getAuth();
+    const navigate = useNavigate();
+
+    const handleLogin = async () => {
         try {
-            await auth.signInWithEmailAndPassword(email, password);
-            // Successful login, fetch user data from Firestore
-            const userDoc = await db.collection('users').doc(auth.currentUser.uid).get();
-            if (userDoc.exists) {
-                setUserData(userDoc.data());
-            }
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            console.log('Logged in successfully:', user);
+            setIsLoggedIn(true);
+            setUser(user); // Set the user data
         } catch (error) {
-            console.error('Error logging in:', error);
-            // Handle error (display error message, etc.)
+            console.error('Login error:', error.message);
         }
     };
 
-    console.log("hallo")
+    useEffect(() => {
+        if (isLoggedIn) {
+            const userToken = nanoid(); // Generate a unique token
+            const userHomePage = `/user/${userToken}`; // Use the token in the URL
+            navigate(userHomePage); // Redirect to user home page
+        }
+    }, [isLoggedIn, navigate]);
 
     return (
         <div className="login-page">
-            <form className="login-form">
-                <div className={"heading"}><h2>Login</h2></div>
-                <div className={"inputs"}>
-                    <div className={"input-container"}>
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            className="login-input"
-                            // ... Other input attributes ...
-                        />
-                    </div>
-                    <div className={"input-container"}>
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            className="login-input"
-                        />
-                    </div>
-                </div>
-                <div className={"button-container"}>
-                    <button type="submit" className="login-button">
-                        Submit
-                    </button>
-                </div>
-            </form>
+            <div className="login">
+                <div>Email or Number</div>
+                <input
+                    type="text"
+                    placeholder="Enter your email or number"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <div>Password</div>
+                <input
+                    type="password"
+                    placeholder="Enter your password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <button onClick={handleLogin}>Login</button>
+            </div>
         </div>
     );
 }
-
-export default LoginPage;

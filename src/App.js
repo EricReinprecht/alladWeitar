@@ -1,23 +1,43 @@
-// src/App.js
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
-import HomePage from './components/pages/HomePage/HomePage';
-import ErrorPage from './components/pages/ErrorPage/ErrorPage';
-import Navbar from './components/NavBar/Navbar';
-import firebaseApp from './firebaseConfig'; // Import the Firebase configuration
-import LoginPage from "./components/pages/LoginPage/LoginPage";
+import { initializeApp } from "firebase/app";
+
+
+
+import UserHomePage from "./components/pages/HomePage/UserHomePage";
+import Navbar from "./components/NavBar/Navbar";
+import HomePage from "./components/pages/HomePage/HomePage";
+import ErrorPage from "./components/pages/ErrorPage/ErrorPage";
+import Login from "./components/pages/LoginPage/LoginPage";
+import {getAuth} from "firebase/auth";
+import {getFirestore} from "firebase/firestore"; // Import logged-out navigation bar component
 
 export default function App() {
-    const [results, setResults] = useState([]); // Initialize state for search results
+    const firebaseConfig = {
+        apiKey: "AIzaSyABCLSYYF6tCso2OsmdKJJuhJgi6Qg1Jyw",
+        authDomain: "alladweitarv2.firebaseapp.com",
+        projectId: "alladweitarv2",
+        storageBucket: "alladweitarv2.appspot.com",
+        messagingSenderId: "518191545789",
+        appId: "1:518191545789:web:f61bad63226c79dae7e6d4",
+        measurementId: "G-SNC78NJ38K"
+    };
+
+    initializeApp(firebaseConfig);
+
+    const [results, setResults] = useState([]);
+    const [user, setUser] = useState(null);
 
     return (
         <Router>
             <div id={"main"}>
                 <Navbar setResults={setResults}/>
+
                 <Routes>
-                    <Route path="/" element={<HomePage results={results}/>} />
-                    <Route path="/login" element={<LoginPage/>} />
+                    <Route path="/" element={<HomePage results={results} />} />
+                    <Route path="/login" element={<Login setUser={setUser} />} />
+                    <Route path="/user/:token" element={<UserHomePage user={user} results={results} />} />
                     <Route path="/404" element={<ErrorPage />} />
                     <Route path="*" element={<Navigate to="/404" />} />
                 </Routes>
