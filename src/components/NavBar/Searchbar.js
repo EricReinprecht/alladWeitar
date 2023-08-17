@@ -46,14 +46,12 @@ const SearchBar = ({ setResults }) => {
 
   return (
     <div className="searchbar">
-      <div className={"input-container"}>
         <input
             type="text"
             placeholder="Search"
             value={input}
             onChange={(event) => handleChange(event.target.value)}
         />
-      </div>
     </div>
   );
 };
