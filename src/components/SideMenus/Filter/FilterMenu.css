@@ -2,7 +2,6 @@
     position: fixed;
     left: 0;
     top: 50%;
-    margin-top: 40px;
     background-color: #333;
     color: #fff;
     padding: 10px;
@@ -11,6 +10,10 @@
     transition: left 0.3s ease;
     border-radius: 5px; /* Rounded corners */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .menu-button.menu-button-expanded {

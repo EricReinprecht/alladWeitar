@@ -20,7 +20,7 @@ export default function FilterMenu({ results }) {
             </div>
 
             <div className={`menu-button ${menuVisible ? 'menu-button-expanded' : ''}`} onClick={toggleMenu}>
-                <BiSolidRightArrow /> {/* Use a menu icon */}
+                <BiSolidRightArrow />
             </div>
         </div>
     );

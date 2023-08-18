@@ -1,0 +1,51 @@
+.main-menu {
+    margin-top: 101px;
+    position: fixed;
+    right: -200px; /* Adjust the initial position */
+    top: 0;
+    width: 200px; /* Adjust the width of the menu */
+    height: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1;
+    transition: right 0.3s ease; /* Use 'right' instead of 'left' */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Shadow on the side */
+}
+
+.main-menu-expanded {
+    right: 0; /* Move the menu to the visible position */
+}
+
+.main-menu-button {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 2;
+    transition: right 0.3s ease;
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-menu-button.main-menu-button-expanded {
+    right: 200px; /* Adjust the width of the menu */
+}
+
+.main-menu-item {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.main-menu-item:hover {
+    background-color: #f5f5f5; /* Highlight on hover */
+}
