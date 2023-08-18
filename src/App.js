@@ -11,6 +11,7 @@ import HomePage from "./components/pages/HomePage/HomePage";
 import ErrorPage from "./components/pages/ErrorPage/ErrorPage";
 import LoginPage from "./components/pages/LoginPage/LoginPage"; // Import logged-out navigation bar component
 import { getFirestore } from "firebase/firestore";
+import LoggedInNavbar from "./components/NavBar/LoggedInNavbar";
 
 export default function App() {
     const firebaseConfig = {
@@ -31,18 +32,18 @@ export default function App() {
     const [user, setUser] = useState(null);
 
     return (
-        <Router>
-            <div id={"main"}>
-                <Navbar setResults={setResults}/>
+            <Router>
+                <div id={"main"}>
+                    {user ? (<LoggedInNavbar user={user} setResults={setResults}/>) : (<Navbar setResults={setResults} />)}
+                    <Routes>
+                        <Route path="/" element={<HomePage results={results} />} />
+                        <Route path="/login" element={<LoginPage setUser={setUser} />} />
+                        <Route path="/user/:token" element={<UserHomePage user={user} results={results} />} />
+                        <Route path="/404" element={<ErrorPage />} />
+                        <Route path="*" element={<Navigate to="/404" />} />
+                    </Routes>
+                </div>
+            </Router>
 
-                <Routes>
-                    <Route path="/" element={<HomePage results={results} />} />
-                    <Route path="/login" element={<LoginPage setUser={setUser} />} />
-                    <Route path="/user/:token" element={<UserHomePage user={user} results={results} />} />
-                    <Route path="/404" element={<ErrorPage />} />
-                    <Route path="*" element={<Navigate to="/404" />} />
-                </Routes>
-            </div>
-        </Router>
     );
 }

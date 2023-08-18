@@ -59,7 +59,7 @@ function LoginPage({ setUser }) {
                     </div>
                 </div>
                 <div className="button-container">
-                    <button type="button" onClick={handleLogin}>
+                    <button type="button" className={"login-button"} onClick={handleLogin}>
                         Login
                     </button>
                 </div>
