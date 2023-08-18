@@ -24,7 +24,6 @@ export const fetchUsername = async (uid) => {
 // Custom hook that handles fetching and providing the username
 export function useUsername(user) {
     const [username, setUsername] = useState("");
-
     useEffect(() => {
         const fetchUserData = async () => {
             const fetchedUsername = await fetchUsername(user.uid);

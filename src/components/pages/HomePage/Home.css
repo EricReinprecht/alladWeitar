@@ -1,0 +1,26 @@
+/* Home.css */
+/* Adjust these styles according to your design */
+.menu-button {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.menu {
+    position: fixed;
+    top: 40px;
+    left: 10px;
+    width: 200px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: none;
+}
+
+.menu-expanded {
+    display: block;
+}
