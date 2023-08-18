@@ -2,7 +2,9 @@ import '../../../App.css'
 import './Home.css'
 import PartyDisplay from "../../PartyDisplay/PartyDisplay";
 import React, { useEffect, useState } from 'react';
-import { getFirestore, doc, getDoc } from "firebase/firestore"; // Import firestore related functions
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+import FilterMenu from "../../SideMenus/Filter/FilterMenu";
+import MainMenu from "../../SideMenus/MainMenu/MainMenu"; // Import firestore related functions
 
 export default function UserHomePage ({ user, results }){
     const [username, setUsername] = useState("");
@@ -29,6 +31,8 @@ export default function UserHomePage ({ user, results }){
             <div className="defaultFestList">
                 <PartyDisplay results={results}/>
             </div>
+            <FilterMenu/>
+            <MainMenu/>
             <div>{user.email}</div>
             <div>{username}</div>
         </div>

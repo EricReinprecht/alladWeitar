@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import {getAuth, sendEmailVerification, signInWithEmailAndPassword} from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import './LoginPage.css'
 import {nanoid} from "nanoid";
@@ -20,6 +20,16 @@ function LoginPage({ setUser }) {
         console.log(isChecked)
     };
 
+    const sendEmailVerificationLink = async () => {
+        const user = auth.currentUser;
+        try {
+            await sendEmailVerification(user);
+            setError('A verification email has been sent. Check your inbox.');
+        } catch (error) {
+            setError('Error sending verification email.');
+        }
+    };
+
     const handleLogin = async () => {
         setIsLoading(true); // Show loading spinner
         setError(null); // Clear previous errors
@@ -27,13 +37,30 @@ function LoginPage({ setUser }) {
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
-            localStorage.setItem('user', JSON.stringify(user));
-            console.log('Logged in successfully:', user);
-            setUser(user);
-            setIsLoading(false); // Turn off loading
-            const userToken = nanoid();
-            const userHomePage = `/user/${userToken}`;
-            navigate(userHomePage);
+            if (user.emailVerified) {
+                setUser(user);
+                localStorage.setItem('user', JSON.stringify(user));
+                console.log('Logged in successfully:', user);
+                setIsLoading(false);
+                const userToken = nanoid();
+                const userHomePage = `/user/${userToken}`;
+                navigate(userHomePage);
+            } else {
+                setError(
+                    <div className={"send-container"}>
+                        <button
+                            className="send-button"
+                            type="button"
+                            onClick={sendEmailVerificationLink}
+                            disabled={isLoading}
+                        >
+                            Send again
+                        </button>
+                        Your email is not yet verified. Check your inbox for a verification email.
+                    </div>
+                );
+                setIsLoading(false);
+            }
         } catch (error) {
             //setError(error.message); // Set error message
             setIsLoading(false); // Turn off loading

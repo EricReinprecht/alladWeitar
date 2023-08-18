@@ -5,68 +5,76 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import './RegisterPage.css';
 import {collection, doc, getDocs, getFirestore, setDoc} from "firebase/firestore"; // Import the CSS file for styling
+import { sendEmailVerification } from "firebase/auth";
 
-function RegisterPage() {
-    const [firstname, setFirstname] = useState('');
-    const [lastname, setLastname] = useState('');
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [isLoading, setIsLoading] = useState(false); // Added loading state
-    const [error, setError] = useState(null); // Added error state
+    function RegisterPage() {
+        const [firstname, setFirstname] = useState('');
+        const [lastname, setLastname] = useState('');
+        const [username, setUsername] = useState('');
+        const [email, setEmail] = useState('');
+        const [password, setPassword] = useState('');
+        const [confirmPassword, setConfirmPassword] = useState('');
+        const [isLoading, setIsLoading] = useState(false);
+        const [error, setError] = useState(null);
 
-    const auth = getAuth();
-    const firestore = getFirestore(); // Initialize Firestore
-    const navigate = useNavigate();
+        const auth = getAuth();
+        const firestore = getFirestore();
+        const navigate = useNavigate();
 
-    const handleRegister = async () => {
-        setIsLoading(true); // Show loading spinner
-        setError(null); // Clear previous errors
+        const sendEmailVerificationLink = async (user) => {
+            await sendEmailVerification(user);
+        };
 
-        if (username.length > 10) {
-            setError("Username must be 10 characters or less");
-            setIsLoading(false);
-            return;
-        }
+        const handleRegister = async () => {
+            setIsLoading(true);
+            setError(null);
 
-        // Check if passwords match
-        if (password !== confirmPassword) {
-            setError("Passwords do not match");
-            setIsLoading(false); // Turn off loading
-            return;
-        }
-
-        const lowercaseUsername = username.toLowerCase();
-
-        try {
-            // Check if username is already taken
-            const usernameQuery = await getDocs(collection(firestore, "users"));
-            const existingUsernames = usernameQuery.docs.map(doc => doc.data().username);
-            if (existingUsernames.includes(lowercaseUsername)) {
-                setError("Username is already taken");
+            if (username.length > 10) {
+                setError("Username must be 10 characters or less");
                 setIsLoading(false);
                 return;
             }
 
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            const user = userCredential.user;
-            console.log('Registered successfully:', user);
+            if (password !== confirmPassword) {
+                setError("Passwords do not match");
+                setIsLoading(false);
+                return;
+            }
 
-            const userDocRef = doc(firestore, "users", user.uid);
-            await setDoc(userDocRef, {
-                username: lowercaseUsername,
-                firstname,
-                lastname,
-            });
+            const lowercaseUsername = username.toLowerCase();
 
-            setIsLoading(false);
-            navigate('/login');
-        } catch (error) {
-            setIsLoading(false);
-            setError(error.message);
-        }
-    };
+            try {
+                const usernameQuery = await getDocs(collection(firestore, "users"));
+                const existingUsernames = usernameQuery.docs.map(doc => doc.data().username);
+                if (existingUsernames.includes(lowercaseUsername)) {
+                    setError("Username is already taken");
+                    setIsLoading(false);
+                    return;
+                }
+
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                console.log('Registered successfully:', user);
+                navigate('/login');
+
+                const userDocRef = doc(firestore, "users", user.uid);
+                await setDoc(userDocRef, {
+                    username: lowercaseUsername,
+                    firstname,
+                    lastname,
+                });
+
+                // Send verification email
+                await sendEmailVerificationLink(user);
+
+                setIsLoading(false);
+                setError("A verification email has been sent to your email address. Please verify your email before logging in.");
+                navigate('/login')
+            } catch (error) {
+                setIsLoading(false);
+                setError(error.message);
+            }
+        };
 
     return (
         <div className="register-page">
