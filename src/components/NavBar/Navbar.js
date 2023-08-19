@@ -3,7 +3,8 @@ import "./Navbar.css";
 import React, {useEffect, useState} from "react";
 import Searchbar from "./Searchbar";
 import Cookies from "js-cookie";
-import {checkTokenExpirationAndRefresh, refreshIdToken} from "../../checkTokenExpirationAndRefresh"
+import {refreshIdToken} from "../../checkTokenExpirationAndRefresh"
+import {auth} from "../../firebaseConfig";
 
 
 const Navbar = ({setResults, user}) => {
@@ -13,19 +14,22 @@ const Navbar = ({setResults, user}) => {
     const [isLoading, setIsLoading] = useState(!user); // Set loading state initially if user is not available
 
     const handleLogout = () => {
-        checkTokenExpirationAndRefresh(user);
-        Cookies.remove('rememberedUser');
-        sessionStorage.removeItem('rememberedUser')
+        auth.signOut()
+            .then(() => {
+                // User is now logged out from Firebase
+                console.log('User is logged out');
+                // Additionally, you can remove local storage or cookies here
+                Cookies.remove('rememberedUser');
+                sessionStorage.removeItem('rememberedUser');
+            })
+            .catch(error => {
+                console.error('Error while logging out:', error);
+            });
     };
 
     useEffect(() => {
         console.log(rememberedUser)
     }, []);
-
-    const handleToken = () => {
-        console.log("hallo")
-        refreshIdToken(user);
-    };
 
     if (rememberedUser!=null || sessionUser!=null) {
         return <nav className="navbar">
@@ -34,10 +38,10 @@ const Navbar = ({setResults, user}) => {
             </Link>
             <div id={"searchbar"}><Searchbar setResults={setResults}/></div>
             <ul id="list">
-                <li><a onClick={handleToken}>Filter</a></li>
+                <li><a href={"/"}>Filter</a></li>
                 <li><a href={"/"}>{"Loggedin"}</a></li>
                 <li><a href={"/"}>Cards</a></li>
-                <li><a href={'/'} onClick={handleLogout}>Logout</a></li>
+                <li><a href={"/"} onClick={handleLogout}>Logout</a></li>
             </ul>
         </nav>
     }else{
