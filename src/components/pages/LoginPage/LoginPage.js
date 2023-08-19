@@ -18,37 +18,13 @@ function LoginPage({ setUser }) {
 
     // Access the 'uid' property and other properties of the user object
 
-    const refreshIdToken = async (user) => {
-        const auth = getAuth();
-
-        try {
-            // Refresh the user's ID token
-            await user.getIdToken(true);
-            console.log('Token refreshed successfully.');
-        } catch (error) {
-            console.error('Error refreshing token:', error);
-        }
-    };
-    const checkTokenExpirationAndRefresh = async (user) => {
-        const tokenInfo = user.getIdTokenResult();
-        const expirationTime = tokenInfo.expirationTime; // Token expiration timestamp
-        const currentTime = Math.floor(Date.now() / 1000); // Current time in seconds
-
-        // Set a threshold, like refreshing the token 5 minutes before it expires
-        const refreshThreshold = 5 * 60; // 5 minutes in seconds
-
-        if (expirationTime - currentTime < refreshThreshold) {
-            // Token is close to expiring, refresh it
-            await refreshIdToken(user);
-        }
-    };
     const setRememberMeCookie = (user) => {
         if (isChecked) {
             const expires = new Date();
             expires.setDate(expires.getDate() + 30); // Set expiration date 30 days from now
             Cookies.set('rememberedUser', JSON.stringify(user), { expires });
         } else {
-            Cookies.remove('rememberedUser');
+            sessionStorage.setItem('rememberedUser', JSON.stringify(user)); // Use sessionStorage
         }
     };
     const handleCheckboxChange = () => {

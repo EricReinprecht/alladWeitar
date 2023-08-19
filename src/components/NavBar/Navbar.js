@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Searchbar from "./Searchbar";
 import Cookies from "js-cookie";
 import {checkTokenExpirationAndRefresh, refreshIdToken} from "../../checkTokenExpirationAndRefresh"
@@ -9,19 +9,25 @@ import {checkTokenExpirationAndRefresh, refreshIdToken} from "../../checkTokenEx
 const Navbar = ({setResults, user}) => {
     const navigate = useNavigate(); // Initialize useNavigate
     const rememberedUser = Cookies.get('rememberedUser');
+    const sessionUser = sessionStorage.getItem('rememberedUser')
     const [isLoading, setIsLoading] = useState(!user); // Set loading state initially if user is not available
 
     const handleLogout = () => {
         checkTokenExpirationAndRefresh(user);
         Cookies.remove('rememberedUser');
+        sessionStorage.removeItem('rememberedUser')
     };
+
+    useEffect(() => {
+        console.log(rememberedUser)
+    }, []);
 
     const handleToken = () => {
         console.log("hallo")
         refreshIdToken(user);
     };
 
-    if (rememberedUser!=null) {
+    if (rememberedUser!=null || sessionUser!=null) {
         return <nav className="navbar">
             <Link to="/" id="logo">
                 <div className="app-name">AlladWeitar</div>
