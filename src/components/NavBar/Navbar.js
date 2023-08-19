@@ -7,6 +7,7 @@ import Searchbar from "./Searchbar";
 
 const Navbar = ({setResults}) => {
 
+
     return (
         <nav className="navbar">
                 <Link to="/" id="logo">

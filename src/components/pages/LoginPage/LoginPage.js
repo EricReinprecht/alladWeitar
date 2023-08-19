@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState} from 'react';
 import {getAuth, sendEmailVerification, signInWithEmailAndPassword} from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import './LoginPage.css'
 import {nanoid} from "nanoid";
+import Cookies from 'js-cookie';
 
 function LoginPage({ setUser }) {
     const [email, setEmail] = useState('');
@@ -14,6 +15,18 @@ function LoginPage({ setUser }) {
     const auth = getAuth();
     const navigate = useNavigate();
 
+
+    // Access the 'uid' property and other properties of the user object
+
+    const setRememberMeCookie = (user) => {
+        if (isChecked) {
+            const expires = new Date();
+            expires.setDate(expires.getDate() + 30); // Set expiration date 30 days from now
+            Cookies.set('rememberedUser', JSON.stringify(user), { expires });
+        } else {
+            Cookies.remove('rememberedUser');
+        }
+    };
     const handleCheckboxChange = () => {
         console.log(isChecked)
         setIsChecked(!isChecked);
@@ -39,11 +52,12 @@ function LoginPage({ setUser }) {
             const user = userCredential.user;
             if (user.emailVerified) {
                 setUser(user);
-                localStorage.setItem('user', JSON.stringify(user));
+                setRememberMeCookie(user);
+                console.log(Cookies.get('rememberedUser'))
                 console.log('Logged in successfully:', user);
                 setIsLoading(false);
                 const userToken = nanoid();
-                const userHomePage = `/user/${userToken}`;
+                const userHomePage = `/`;
                 navigate(userHomePage);
             } else {
                 setError(
