@@ -1,73 +1,64 @@
 import React, { useState } from 'react';
-import '../../../App.css';
-import './FilterMenu.css';
-import './DateFilter.css';
 import Calendar from 'react-calendar';
+import './DateFilter.css';
 
-export default function DateFilter() {
+function App() {
     const [selectedDates, setSelectedDates] = useState([]);
+    const [selectedDatesReal, setSelectedDatesReal] = useState([]);
 
-    const formatDate = date => {
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
-        const day = String(date.getDate()).padStart(2, '0');
-
-        return `${year}-${month}-${day}`;
-    };
-
-// Usage example
-    const today = new Date();
-    const formattedDate = formatDate(today); // Example output: "2023-08-21"
-
+    const printDates = () => {
+        console.log('Selected Dates:', selectedDates);
+        console.log('Selected Dates Real:', selectedDatesReal);
+    }
 
     const handleDateClick = date => {
-        console.log('Clicked Date:', date);
+        const dateStr = date.toISOString().split('T')[0];
 
-        const selectedDate = new Date(date);
-        selectedDate.setHours(0, 0, 0, 0);
-
-        const localOffset = selectedDate.getTimezoneOffset() * 60000; // Convert minutes to milliseconds
-        const adjustedDate = new Date(selectedDate.getTime() - localOffset);
-
-        const clickedDateStr = adjustedDate.toISOString().split('T')[0];
-        console.log(clickedDateStr);
-
-        if (selectedDates.includes(clickedDateStr)) {
-            setSelectedDates(selectedDates.filter(date => date !== clickedDateStr));
+        if (selectedDates.includes(dateStr)) {
+            setSelectedDates(selectedDates.filter(selectedDate => selectedDate !== dateStr));
         } else {
-            setSelectedDates([...selectedDates, clickedDateStr]);
+            setSelectedDates([...selectedDates, dateStr]);
         }
-    };
 
+
+        const selectedDateReal = new Date(date);
+        selectedDateReal.setHours(0, 0, 0, 0);
+
+        const localOffset = selectedDateReal.getTimezoneOffset() * 60000; // Convert minutes to milliseconds
+        const adjustedDateReal = new Date(selectedDateReal.getTime() - localOffset);
+
+        const clickedDateStrReal = adjustedDateReal.toISOString().split('T')[0];
+        console.log(clickedDateStrReal);
+
+        if (selectedDatesReal.includes(clickedDateStrReal)) {
+            setSelectedDatesReal(selectedDates.filter(date => date !== clickedDateStrReal));
+        } else {
+            setSelectedDatesReal([...selectedDatesReal, clickedDateStrReal]);
+        }
+
+
+    };
 
 
     const navigationLabel = ({ date }) => {
         return `${date.toLocaleString('default', { month: 'long' })} ${date.getFullYear()}`;
     };
 
-    const printDates = () => {
-        console.log('Selected Dates:', selectedDates);
-
-        const date = new Date();
-        const timezoneOffset = date.getTimezoneOffset();
-        console.log(`Timezone Offset: ${timezoneOffset} minutes`);
-    }
-
     return (
-        <div className='date-filter'>
-            <div>Select Date</div>
-            <div className={'calendar'}>
-                <Calendar
-                    tileClassName={({ date, view }) =>
-                        selectedDates.includes(date.toString().split('T')[0]) ? 'selected' : ''
-                    }
-                    onClickDay={handleDateClick}
-                    selectRange={false}
-                    value={null}
-                    navigationLabel={navigationLabel}
-                />
-            </div>
+        <div className="App">
+            <h1>Multi-Date Calendar</h1>
+            <Calendar
+                tileClassName={({ date, view }) =>
+                    selectedDates.includes(date.toISOString().split('T')[0]) ? 'selected' : ''
+                }
+                onClickDay={handleDateClick}
+                selectRange={false}
+                value={null}
+            />
             <button onClick={printDates}>print Dates</button>
         </div>
     );
 }
+
+export default App;
+
