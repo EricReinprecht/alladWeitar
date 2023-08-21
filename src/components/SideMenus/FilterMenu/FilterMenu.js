@@ -14,25 +14,16 @@ export default function FilterMenu({ results }) {
         setMenuVisible(!menuVisible);
     };
 
-    const handleDateClick = date => {
-        const dateStr = date.toISOString().split('T')[0];
-
-        if (selectedDates.includes(dateStr)) {
-            setSelectedDates(selectedDates.filter(selectedDate => selectedDate !== dateStr));
-        } else {
-            setSelectedDates([...selectedDates, dateStr]);
-        }
-    };
 
     return (
         <div className='filter-menu'>
-            <div className={`menu ${menuVisible ? 'menu-expanded' : ''}`}>
+            <div className={`filter-menu ${menuVisible ? 'filter-menu-expanded' : ''}`}>
                 <DateFilter/>
-                <div className='menu-item'>Item 2</div>
-                <div className='menu-item'>Item 3</div>
+                <div className='filter-menu-item'>Item 2</div>
+                <div className='filter-menu-item'>Item 3</div>
             </div>
 
-            <div className={`menu-button ${menuVisible ? 'menu-button-expanded' : ''}`} onClick={toggleMenu}>
+            <div className={`filter-menu-button ${menuVisible ? 'filter-menu-button-expanded' : ''}`} onClick={toggleMenu}>
                 <BiSolidRightArrow />
             </div>
         </div>

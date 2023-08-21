@@ -1,31 +1,56 @@
 import React, { useState } from 'react';
 import '../../../App.css';
+import './FilterMenu.css';
 import './DateFilter.css';
 import Calendar from 'react-calendar';
-
 
 export default function DateFilter() {
     const [selectedDates, setSelectedDates] = useState([]);
 
-    const handleDateClick = date => {
-        const dateStr = date.toISOString().split('T')[0];
+    const formatDate = date => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+        const day = String(date.getDate()).padStart(2, '0');
 
-        if (selectedDates.includes(dateStr)) {
-            setSelectedDates(selectedDates.filter(selectedDate => selectedDate !== dateStr));
+        return `${year}-${month}-${day}`;
+    };
+
+// Usage example
+    const today = new Date();
+    const formattedDate = formatDate(today); // Example output: "2023-08-21"
+
+
+    const handleDateClick = date => {
+        console.log('Clicked Date:', date);
+
+        const selectedDate = new Date(date);
+        selectedDate.setHours(0, 0, 0, 0);
+
+        const localOffset = selectedDate.getTimezoneOffset() * 60000; // Convert minutes to milliseconds
+        const adjustedDate = new Date(selectedDate.getTime() - localOffset);
+
+        const clickedDateStr = adjustedDate.toISOString().split('T')[0];
+        console.log(clickedDateStr);
+
+        if (selectedDates.includes(clickedDateStr)) {
+            setSelectedDates(selectedDates.filter(date => date !== clickedDateStr));
         } else {
-            setSelectedDates([...selectedDates, dateStr]);
+            setSelectedDates([...selectedDates, clickedDateStr]);
         }
     };
-    const navigationLabel= (date) => {
-        return(
-            <span
-                className="disable-pointer-events"
-                onClick={(e) => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                }}
-            >{date.toLocaleString('default', { month: 'long', year: 'numeric' })}</span>
-        )
+
+
+
+    const navigationLabel = ({ date }) => {
+        return `${date.toLocaleString('default', { month: 'long' })} ${date.getFullYear()}`;
+    };
+
+    const printDates = () => {
+        console.log('Selected Dates:', selectedDates);
+
+        const date = new Date();
+        const timezoneOffset = date.getTimezoneOffset();
+        console.log(`Timezone Offset: ${timezoneOffset} minutes`);
     }
 
     return (
@@ -34,15 +59,15 @@ export default function DateFilter() {
             <div className={'calendar'}>
                 <Calendar
                     tileClassName={({ date, view }) =>
-                        selectedDates.includes(date.toISOString().split('T')[0]) ? 'selected' : ''
-                }
+                        selectedDates.includes(date.toString().split('T')[0]) ? 'selected' : ''
+                    }
                     onClickDay={handleDateClick}
                     selectRange={false}
                     value={null}
-                    navigationLabel={({ date }) => (navigationLabel(date))}
+                    navigationLabel={navigationLabel}
                 />
             </div>
+            <button onClick={printDates}>print Dates</button>
         </div>
-
     );
 }

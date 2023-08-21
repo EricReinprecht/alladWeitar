@@ -1,4 +1,8 @@
-.menu-button {
+:root{
+    --width-variable: 800px;
+}
+
+.filter-menu-button {
     position: fixed;
     left: -5px;
     top: 50%;
@@ -16,20 +20,20 @@
     align-items: center;
 }
 
-.menu-button:hover {
+.filter-menu-button:hover {
     color: var(--accent);
 }
 
-.menu-button.menu-button-expanded {
-    left: 195px; /* Adjust the width of the menu */
+.filter-menu-button.filter-menu-button-expanded {
+    left: calc(var(--width-variable) - 5px); /* How wid is the toggle button moving if expanded */
 }
 
-.menu {
+.filter-menu {
     margin-top: 101px;
     position: fixed;
-    left: -200px; /* Adjust the initial position */
+    left: calc(0px - var(--width-variable)); /* Adjust the initial position */
     top: 0;
-    width: 200px; /* Adjust the width of the menu */
+    width: var(--width-variable); /* Adjust the width of the menu */
     height: 100%;
     background-color: #fff;
     border: 1px solid #ccc;
@@ -39,17 +43,17 @@
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Shadow on the side */
 }
 
-.menu-expanded {
+.filter-menu-expanded {
     left: 0; /* Move the menu to the visible position */
 }
 
-.menu-item {
+.filter-menu-item {
     padding: 8px;
     border-bottom: 1px solid #ddd;
     color: #333;
     transition: background-color 0.3s ease;
 }
 
-.menu-item:hover {
+.filter-menu-item:hover {
     background-color: #f5f5f5; /* Highlight on hover */
 }
