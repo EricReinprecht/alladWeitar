@@ -45,18 +45,22 @@ function App() {
     };
 
     return (
-        <div className="App">
-            <h1>Multi-Date Calendar</h1>
-            <Calendar
-                tileClassName={({ date, view }) =>
-                    selectedDates.includes(date.toISOString().split('T')[0]) ? 'selected' : ''
-                }
-                onClickDay={handleDateClick}
-                selectRange={false}
-                value={null}
-            />
+        <div className="date-filter">
+            <div className={"calendar"}>
+                <h1>Multi-Date Calendar</h1>
+                <Calendar
+                    tileClassName={({ date, view }) =>
+                        selectedDates.includes(date.toISOString().split('T')[0]) ? 'selected' : 'not-selected'
+                    }
+                    onClickDay={handleDateClick}
+                    selectRange={false}
+                    value={null}
+                />
+            </div>
+
             <button onClick={printDates}>print Dates</button>
         </div>
+
     );
 }
 
