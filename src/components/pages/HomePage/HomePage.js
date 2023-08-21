@@ -3,7 +3,7 @@ import './Home.css';
 import PartyDisplay from '../../PartyDisplay/PartyDisplay';
 import React, { useEffect, useState } from 'react';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
-import FilterMenu from '../../SideMenus/Filter/FilterMenu';
+import FilterMenu from '../../SideMenus/FilterMenu/FilterMenu';
 import MainMenu from '../../SideMenus/MainMenu/MainMenu';
 import Cookies from 'js-cookie';
 
