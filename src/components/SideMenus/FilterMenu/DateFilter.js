@@ -47,7 +47,6 @@ function App() {
     return (
         <div className="date-filter">
             <div className={"calendar"}>
-                <h1>Multi-Date Calendar</h1>
                 <Calendar
                     tileClassName={({ date, view }) =>
                         selectedDates.includes(date.toISOString().split('T')[0]) ? 'selected' : 'not-selected'

@@ -14,11 +14,20 @@ export default function FilterMenu({ results }) {
         setMenuVisible(!menuVisible);
     };
 
+    const toggleItem = () => {
+        //set item invis or vis
+        console.log("hallo")
+    }
+
 
     return (
         <div className='filter-menu'>
             <div className={`filter-menu ${menuVisible ? 'filter-menu-expanded' : ''}`}>
-                <DateFilter/>
+                <div className='filter-menu-item' onClick={toggleItem}>
+                    <div className={'filter-menu-item-heading'}>Calendar</div>
+                    <DateFilter/>
+                </div>
+
                 <div className='filter-menu-item'>Item 2</div>
                 <div className='filter-menu-item'>Item 3</div>
             </div>

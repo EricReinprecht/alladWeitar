@@ -149,6 +149,7 @@
 
 .not-selected{
     background: var(--tertiary);
+    border: 1px solid black;
 }
 
 .react-calendar__tile--now {
