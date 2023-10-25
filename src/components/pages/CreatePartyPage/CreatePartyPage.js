@@ -60,6 +60,7 @@ export default function CreatePartyPage() {
             console.log(partiesCollectionRef)
             const newPartyRef = await addDoc(partiesCollectionRef, {
                 name: name,
+                nameToLowerCase: name.toLowerCase(),
                 location: location,
                 startDate: startDate,
                 endDate: endDate,
@@ -154,7 +155,7 @@ export default function CreatePartyPage() {
                         />
                     </div>
                     <div className="input-container">
-                        <label className="input-heading">Image</label>
+                        <label className="input-heading">Image (max-height:400px)</label>
                         <input
                             type="file"
                             accept="image/*"
