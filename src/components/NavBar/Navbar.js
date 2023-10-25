@@ -38,7 +38,7 @@ const Navbar = ({setResults, user}) => {
             </Link>
             <div id={"searchbar"}><Searchbar setResults={setResults}/></div>
             <ul id="list">
-                <li><a href={"/"}>Filter</a></li>
+                <li><a href={"/create"}>Create</a></li>
                 <li><a href={"/"}>{"Loggedin"}</a></li>
                 <li><a href={"/"}>Cards</a></li>
                 <li><a href={"/"} onClick={handleLogout}>Logout</a></li>

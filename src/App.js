@@ -11,6 +11,8 @@ import { getFirestore } from "firebase/firestore";
 import RegisterPage from "./components/pages/RegisterPage/Register";
 import Cookies from "js-cookie";
 import {checkTokenExpirationAndRefresh} from "./checkTokenExpirationAndRefresh";
+import CreatePartyPage from "./components/pages/CreatePartyPage/CreatePartyPage";
+import PartyPage from "./components/pages/PartyPage/PartyPage";
 
 //TODO other way to handle stay logged in
 
@@ -70,8 +72,11 @@ export default function App() {
                         <Route path="/" element={<HomePage results={results} />} />
                         <Route path="/login" element={<LoginPage setUser={setUser} />} />
                         <Route path="/register" element={<RegisterPage/>} />
+                        <Route path="/create" element={<CreatePartyPage/>} />
+                        <Route path="/party/:partyId" element={<PartyPage/>} />
                         <Route path="/404" element={<ErrorPage />} />
                         <Route path="*" element={<Navigate to="/404" />} />
+
                     </Routes>
                 </div>
             </Router>
