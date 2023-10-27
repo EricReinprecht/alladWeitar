@@ -1,77 +1,87 @@
 import React, { useState } from 'react';
 import './CreatePartyPage.css';
 import { db } from '../../../firebaseConfig';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, updateDoc, arrayUnion, doc, getDoc } from 'firebase/firestore';
 import { ref, uploadString, getDownloadURL, getStorage } from 'firebase/storage';
-import Cookies from "js-cookie"; // Import getStorage
-import { doc, updateDoc, arrayUnion, getDoc } from 'firebase/firestore';
 import { serverTimestamp } from 'firebase/firestore';
-
-
-
+import Cookies from 'js-cookie';
 
 export default function CreatePartyPage() {
+    const [formData, setFormData] = useState({
+        name: '',
+        location: '',
+        startDate: '',
+        endDate: '',
+        startTime: '',
+        image: null,
+        imageUrl: '',
+    });
+    const [loading, setLoading] = useState(false);
 
-    const [name, setName] = useState('');
-    const [location, setLocation] = useState('');
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
-    const [startTime, setStartTime] = useState('');
-    const [image, setImage] = useState(null);
-    const [imageUrl, setImageUrl] = useState('');
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
-
-        // Check if the selected file is an image
         if (file && file.type.startsWith('image/')) {
             const reader = new FileReader();
-
             reader.onload = (event) => {
-                const dataURL = event.target.result;
-                setImage(dataURL);
+                setFormData({ ...formData, image: event.target.result });
             };
-
             reader.readAsDataURL(file);
         } else {
-            // Handle the case where a non-image file is selected
             alert('Please select an image file.');
         }
     };
 
+    const resetForm = () => {
+        setFormData({
+            name: '',
+            location: '',
+            startDate: '',
+            endDate: '',
+            startTime: '',
+            image: null,
+            imageUrl: '',
+        });
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let rememberedUser = Cookies.get('rememberedUser');
-        if (rememberedUser === undefined) {
-            rememberedUser = sessionStorage.getItem('rememberedUser');
+        if (loading) {
+            return;
         }
-        const userObject = JSON.parse(rememberedUser);
-        const userUID = userObject.uid;
-        const partiesCollectionRef = collection(db, 'parties');
+
+        setLoading(true);
 
         try {
+            const userObject = JSON.parse(
+                Cookies.get('rememberedUser') || sessionStorage.getItem('rememberedUser')
+            );
+            const userUID = userObject.uid;
+            const partiesCollectionRef = collection(db, 'parties');
+
             const storage = getStorage();
-            const imageRef = ref(storage, `party_images/${image.name}`);
-            await uploadString(imageRef, image, 'data_url');
+            const imageRef = ref(storage, `party_images/${formData.image.name}`);
+            await uploadString(imageRef, formData.image, 'data_url');
             const imageURL = await getDownloadURL(imageRef);
 
-            // Get the server timestamp
             const serverTimestampValue = serverTimestamp();
-
             const newPartyData = {
-                name: name,
-                nameToLowerCase: name.toLowerCase(),
-                location: location,
-                startDate: startDate,
-                endDate: endDate,
-                startTime: startTime,
+                name: formData.name,
+                nameToLowerCase: formData.name.toLowerCase(),
+                location: formData.location,
+                startDate: formData.startDate,
+                endDate: formData.endDate,
+                startTime: formData.startTime,
                 image: imageURL,
                 createdBy: userUID,
-                createdAt: serverTimestampValue, // Add the created date field
+                createdAt: serverTimestampValue,
             };
 
             const newPartyRef = await addDoc(partiesCollectionRef, newPartyData);
-
             const newPartyID = newPartyRef.id;
 
             await updateDoc(newPartyRef, { id: newPartyID });
@@ -85,20 +95,14 @@ export default function CreatePartyPage() {
                 });
             }
 
-            setName('');
-            setLocation('');
-            setStartDate('');
-            setEndDate('');
-            setStartTime('');
-            setImage(null);
-            setImageUrl('');
+            resetForm();
             alert('Party created successfully!');
         } catch (error) {
             console.error('Error creating party: ', error);
+        } finally {
+            setLoading(false);
         }
     };
-
-
 
     return (
         <div className="create-party-page">
@@ -111,58 +115,65 @@ export default function CreatePartyPage() {
                         <label className="input-heading">Name</label>
                         <input
                             type="text"
+                            name="name"
                             placeholder="Name"
                             className="party-data-input"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
+                            value={formData.name}
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div className="input-container">
                         <label className="input-heading">Location</label>
                         <input
                             type="text"
+                            name="location"
                             placeholder="Location"
                             className="party-data-input"
-                            value={location}
-                            onChange={(e) => setLocation(e.target.value)}
+                            value={formData.location}
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div className="input-container">
                         <label className="input-heading">Start Date</label>
                         <input
                             type="date"
+                            name="startDate"
                             className="party-data-input"
-                            value={startDate}
-                            onChange={(e) => setStartDate(e.target.value)}
+                            value={formData.startDate}
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div className="input-container">
                         <label className="input-heading">End Date</label>
                         <input
                             type="date"
+                            name="endDate"
                             className="party-data-input"
-                            value={endDate}
-                            onChange={(e) => setEndDate(e.target.value)}
+                            value={formData.endDate}
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div className="input-container">
                         <label className="input-heading">Start Time</label>
                         <input
                             type="time"
+                            name="startTime"
                             className="party-data-input"
-                            value={startTime}
-                            onChange={(e) => setStartTime(e.target.value)}
+                            value={formData.startTime}
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div className="input-container">
-                        <label className="input-heading">Image (max-height:400px)</label>
+                        <label className="input-heading">Image (max-height: 400px)</label>
                         <input
                             type="file"
                             accept="image/*"
                             onChange={handleImageUpload}
                         />
                     </div>
-                    <button type="submit">Create Party</button>
+                    <button type="submit" disabled={loading}>
+                        Create Party
+                    </button>
                 </div>
             </form>
         </div>

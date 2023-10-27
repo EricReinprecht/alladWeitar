@@ -76,9 +76,9 @@ export default function MyPartiesPage() {
                                     : 'N/A'}
                             </div>
                             <div className="party-info">
-                                {party.createdAt
-                                    ? `${party.createdAt.toDate().getDate()}. ${party.createdAt.toDate().toLocaleString('default', { month: 'long' })} ${party.createdAt.toDate().getFullYear()}`
-                                    : 'N/A'}
+                                Created: {" " + (party.createdAt
+                                ? `${party.createdAt.toDate().getDate()}. ${party.createdAt.toDate().toLocaleString('default', { month: 'long' })} ${party.createdAt.toDate().getFullYear()}`
+                                : 'N/A')}
                             </div>
                         </div>
                     ))}
