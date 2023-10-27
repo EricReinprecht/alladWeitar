@@ -5,6 +5,8 @@ import { collection, addDoc } from 'firebase/firestore';
 import { ref, uploadString, getDownloadURL, getStorage } from 'firebase/storage';
 import Cookies from "js-cookie"; // Import getStorage
 import { doc, updateDoc, arrayUnion, getDoc } from 'firebase/firestore';
+import { serverTimestamp } from 'firebase/firestore';
+
 
 
 
@@ -38,27 +40,25 @@ export default function CreatePartyPage() {
     };
 
     const handleSubmit = async (e) => {
-
         e.preventDefault();
-        const rememberedUser = Cookies.get('rememberedUser'); // Get the user's ID from the cookie
-        const userObject = JSON.parse(rememberedUser); // Assuming the cookie contains JSON data
+        let rememberedUser = Cookies.get('rememberedUser');
+        if (rememberedUser === undefined) {
+            rememberedUser = sessionStorage.getItem('rememberedUser');
+        }
+        const userObject = JSON.parse(rememberedUser);
         const userUID = userObject.uid;
         const partiesCollectionRef = collection(db, 'parties');
 
         try {
-            // Upload the image to Firebase Storage
             const storage = getStorage();
             const imageRef = ref(storage, `party_images/${image.name}`);
             await uploadString(imageRef, image, 'data_url');
-
-            // Get the download URL of the uploaded image
             const imageURL = await getDownloadURL(imageRef);
 
+            // Get the server timestamp
+            const serverTimestampValue = serverTimestamp();
 
-
-            // Create a new party document in Firebase Firestore with all fields
-            console.log(partiesCollectionRef)
-            const newPartyRef = await addDoc(partiesCollectionRef, {
+            const newPartyData = {
                 name: name,
                 nameToLowerCase: name.toLowerCase(),
                 location: location,
@@ -67,14 +67,15 @@ export default function CreatePartyPage() {
                 startTime: startTime,
                 image: imageURL,
                 createdBy: userUID,
-            });
+                createdAt: serverTimestampValue, // Add the created date field
+            };
+
+            const newPartyRef = await addDoc(partiesCollectionRef, newPartyData);
 
             const newPartyID = newPartyRef.id;
 
-// Update the document with the auto-generated ID
             await updateDoc(newPartyRef, { id: newPartyID });
 
-            // Update the user's document to add the party ID to the createdParties array
             const userDocRef = doc(db, 'users', userUID);
             const userDoc = await getDoc(userDocRef);
 
@@ -84,7 +85,6 @@ export default function CreatePartyPage() {
                 });
             }
 
-            // Reset the input fields after creating the party
             setName('');
             setLocation('');
             setStartDate('');
@@ -94,10 +94,10 @@ export default function CreatePartyPage() {
             setImageUrl('');
             alert('Party created successfully!');
         } catch (error) {
-            console.error(userUID);
             console.error('Error creating party: ', error);
         }
     };
+
 
 
     return (

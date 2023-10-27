@@ -4,3 +4,29 @@
     --tertiary: #b4c5e4;
     --accent: #d7263d;
 }
+
+.party{
+    width: calc(100% - 40px);
+    height: 120px;
+    border: 1px solid var(--secondary);
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: 20px;
+    background: var(--tertiary);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+}
+
+.party:hover {
+    background: linear-gradient(to left, var(--tertiary), #9aa9c6);
+}
+
+.party-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}

@@ -5,23 +5,3 @@
     margin-top: 100px;
 }
 
-
-.result {
-    width: calc(100% - 40px);
-    height: 120px;
-    border: 1px solid var(--secondary);
-    margin-top: 30px;
-    margin-right: 20px;
-    margin-left: 20px;
-    background: var(--tertiary);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    cursor: pointer;
-}
-
-.result:hover {
-    background: linear-gradient(to left, var(--tertiary), #9aa9c6);
-}
-
-

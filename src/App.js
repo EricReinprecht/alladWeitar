@@ -13,6 +13,7 @@ import Cookies from "js-cookie";
 import {checkTokenExpirationAndRefresh} from "./checkTokenExpirationAndRefresh";
 import CreatePartyPage from "./components/pages/CreatePartyPage/CreatePartyPage";
 import PartyPage from "./components/pages/PartyPage/PartyPage";
+import MyPartiesPage from "./components/pages/MyPartiesPage/MyPartiesPage";
 
 //TODO other way to handle stay logged in
 
@@ -74,6 +75,7 @@ export default function App() {
                         <Route path="/register" element={<RegisterPage/>} />
                         <Route path="/create" element={<CreatePartyPage/>} />
                         <Route path="/party/:partyId" element={<PartyPage/>} />
+                        <Route path="/my-parties" element={<MyPartiesPage/>} />
                         <Route path="/404" element={<ErrorPage />} />
                         <Route path="*" element={<Navigate to="/404" />} />
 

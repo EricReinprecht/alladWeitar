@@ -33,13 +33,13 @@ const Navbar = ({setResults, user}) => {
 
     if (rememberedUser!=null || sessionUser!=null) {
         return <nav className="navbar">
-            <Link to="/" id="logo">
+            <Link to="/" id="logo" onClick={() => this.forceUpdate}>
                 <div className="app-name">AlladWeitar</div>
             </Link>
             <div id={"searchbar"}><Searchbar setResults={setResults}/></div>
             <ul id="list">
                 <li><a href={"/create"}>Create</a></li>
-                <li><a href={"/"}>{"Loggedin"}</a></li>
+                <li><a href={"/my-parties"}>{"MyParties"}</a></li>
                 <li><a href={"/"}>Cards</a></li>
                 <li><a href={"/"} onClick={handleLogout}>Logout</a></li>
             </ul>

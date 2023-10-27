@@ -30,7 +30,7 @@ const PartyPage = () => {
             {error ? (
                 <div>Error: {error}</div>
             ) : partyData ? (
-                <div className={"party"}>
+                <div className={"party-display"}>
                     <div className={"party-data"}>
                         <h1>{partyData.name}</h1>
                         <div>

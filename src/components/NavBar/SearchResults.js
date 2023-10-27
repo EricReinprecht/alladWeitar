@@ -12,9 +12,15 @@ const SearchResults = ({ results }) => {
     return (
         <div className="results-list">
             {results.map((result) => (
-                <div key={result.id} className={"result"} onClick={() => routeToParty(result)}>
-                    <div className={"info"}>{result.name}</div>
-                    <div className={"info"}>{result.startDate}</div>
+                <div key={result.id} className={"party"} onClick={() => routeToParty(result)}>
+                    <div className={"party-info"}>{result.name}</div>
+                    <div className={"party-info"}>{result.startDate
+                            ? new Date(result.startDate).toLocaleDateString('de-DE', {
+                                day: '2-digit',
+                                month: 'long',
+                                year: 'numeric',
+                            })
+                            : 'N/A'}</div>
                 </div>
             ))}
         </div>
